@@ -44,11 +44,12 @@ namespace Player.Movement
         {
             AnimationsStateMachine.SetState(AnimationsStates.IsRunning);
             _moveDirection = moveDirection;
-            _moveStats = MoveStats.Run;
+            _moveStats = moveDirection == 0 ? MoveStats.Walk : MoveStats.Run;
         }
 
         private static void ApplyForces()
         {
+            Debug.Log("Move stat is Value: " + _moveStats);
             // Move Force
             _rigidbody2D.linearVelocityX = _moveStats switch
             {
