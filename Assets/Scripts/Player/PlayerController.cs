@@ -44,6 +44,14 @@ namespace Player
             OnMovementUpdate();
             OnJumpUpdate();
             OnPushAndPullUpdate();
+
+            #region Debuging Code
+            #if UNITY_EDITOR
+                        OnMovementAwake(_rigidbody2D, walkSpeed, runSpeed);
+                        OnJumpAwake(_rigidbody2D, jumpPower, runJumpPenalty);
+                        OnPushAndPullAwake(_rigidbody2D);
+            #endif
+            #endregion
         }
 
         private void FixedUpdate()
