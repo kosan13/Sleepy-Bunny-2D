@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player.Movement
 {
-    public enum WalkOrRun
+    public enum MoveStats
     {
         Walk,
         Run
@@ -18,8 +18,8 @@ namespace Player.Movement
         private static float _moveDirection;
         public static float MoveDirection => _moveDirection;
 
-        private static WalkOrRun _walkOrRun;
-        public static WalkOrRun WalkOrRun => _walkOrRun;
+        private static MoveStats _moveStats;
+        public static MoveStats MoveStats => _moveStats;
 
         public static void OnMovementAwake(Rigidbody2D rigidbody2D, float walkSpeed, float runSpeed)
         {
@@ -38,22 +38,22 @@ namespace Player.Movement
         {
             AnimationsStateMachine.SetState(AnimationsStates.IsWalking);
             _moveDirection = moveDirection;
-            _walkOrRun = WalkOrRun.Walk;
+            _moveStats = MoveStats.Walk;
         }
         public static void OnRun(float moveDirection)
         {
             AnimationsStateMachine.SetState(AnimationsStates.IsRunning);
             _moveDirection = moveDirection;
-            _walkOrRun = WalkOrRun.Run;
+            _moveStats = MoveStats.Run;
         }
 
         private static void ApplyForces()
         {
             // Move Force
-            _rigidbody2D.linearVelocityX = _walkOrRun switch
+            _rigidbody2D.linearVelocityX = _moveStats switch
             {
-                WalkOrRun.Walk => _moveDirection * _walkSpeed,
-                WalkOrRun.Run => _moveDirection * _runSpeed,
+                MoveStats.Walk => _moveDirection * _walkSpeed,
+                MoveStats.Run => _moveDirection * _runSpeed,
                 _ => _rigidbody2D.linearVelocityX
             };
         }

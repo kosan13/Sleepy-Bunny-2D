@@ -30,10 +30,10 @@ namespace Player.Movement
         {
             if (_isJump == false) { _rigidbody2D.linearVelocityY += 0; return; }
 
-            _rigidbody2D.linearVelocityY += Move.WalkOrRun switch
+            _rigidbody2D.linearVelocityY += Move.MoveStats switch
             {
-                WalkOrRun.Walk => Vector2.up.y * _jumpPower,
-                WalkOrRun.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
+                MoveStats.Walk => Vector2.up.y * _jumpPower,
+                MoveStats.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
                 _ => _rigidbody2D.linearVelocityY
             };
             _isJump = false;
