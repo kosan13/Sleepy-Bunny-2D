@@ -42,6 +42,8 @@ namespace Player.Movement
         }
         public static void OnRun(float moveDirection)
         {
+            if (!Jump.IsGrounded(_rigidbody2D)) OnMove(moveDirection);
+            
             AnimationsStateMachine.SetState(AnimationsStates.IsRunning);
             _moveDirection = moveDirection;
             _moveStats = moveDirection == 0 ? MoveStats.Walk : MoveStats.Run;
