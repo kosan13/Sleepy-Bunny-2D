@@ -12,9 +12,12 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         [Header("Move")]
-        [SerializeField] private float speed;
+        [SerializeField] private float walkSpeed;
+        [SerializeField] private float runSpeed;
         [Header("Jump")]
         [SerializeField] private float jumpPower;
+        [Tooltip("The number you divide the 'jumpPower' by")]
+        [SerializeField] private float runJumpPenalty;
         
         private PlayerInputController _inputControls;
         private Rigidbody2D _rigidbody2D;
@@ -28,8 +31,8 @@ namespace Player
             
             _rigidbody2D = GetComponent<Rigidbody2D>();
 
-            OnMovementAwake(_rigidbody2D, speed);
-            OnJumpAwake(_rigidbody2D, jumpPower);
+            OnMovementAwake(_rigidbody2D, walkSpeed, runSpeed);
+            OnJumpAwake(_rigidbody2D, jumpPower, runJumpPenalty);
             OnPushAndPullAwake(_rigidbody2D);
         }
 
@@ -53,11 +56,18 @@ namespace Player
         private void OnCollisionEnter2D(Collision2D other) => OnPushAndPullCollisionEnter2D(other);
         private void OnCollisionExit2D(Collision2D other) => OnPushAndPullCollisionExit2D(other);
 
+        private void OnTriggerEnter2D(Collider2D other) => OnPushAndPullTriggerEnter2D(other);
+
+        private void OnTriggerExit2D(Collider2D other) => OnPushAndPullOnTriggerExit2D(other);
+
 
         private void MovementControlsBind()
         {
             PlayerMap.Move.performed += OnMovePreset;
             PlayerMap.Move.canceled += OnMoveRelist;
+            
+            PlayerMap.Run.performed += OnRunPreset;
+            PlayerMap.Run.canceled += OnRunRelist;
 
             PlayerMap.Jump.performed += OnJumpPreset;
             PlayerMap.Jump.canceled += OnJumpRelist;
@@ -68,6 +78,9 @@ namespace Player
 
         public static void OnMovePreset(CallbackContext callbackContext) => OnMove(callbackContext.ReadValue<float>());
         private static void OnMoveRelist(CallbackContext callbackContext) => OnMove(0);
+        
+        public static void OnRunPreset(CallbackContext callbackContext) => OnRun(callbackContext.ReadValue<float>());
+        private static void OnRunRelist(CallbackContext callbackContext) => OnRun(0);
         
         private static void OnJumpPreset(CallbackContext callbackContext) => OnJump(callbackContext.performed);
         private static void OnJumpRelist(CallbackContext callbackContext) => OnJump(false);

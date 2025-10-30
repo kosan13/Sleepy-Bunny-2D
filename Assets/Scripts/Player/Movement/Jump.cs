@@ -1,3 +1,4 @@
+using System;
 using Animation;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Player.Movement
     {
         private static Rigidbody2D _rigidbody2D;
         private static float _jumpPower;
+        private static float _runJumpPenalty;
         private static bool _isJump;
         
         /// <summary>
@@ -15,10 +17,11 @@ namespace Player.Movement
         private const int GroundLayerMask = 3;
         private const int RayCastLength = 1000;
         
-        public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower)
+        public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower, float runJumpPenalty)
         {
             _rigidbody2D = rigidbody2D;
             _jumpPower = jumpPower;
+            _runJumpPenalty = runJumpPenalty;
             _isJump = false;
         }
         public static void OnJumpUpdate() {}
@@ -26,7 +29,13 @@ namespace Player.Movement
         public static void OnJumpFixedUpdate()
         {
             if (_isJump == false) { _rigidbody2D.linearVelocityY += 0; return; }
-            _rigidbody2D.linearVelocityY += Vector2.up.y * _jumpPower;
+
+            _rigidbody2D.linearVelocityY += Move.WalkOrRun switch
+            {
+                WalkOrRun.Walk => Vector2.up.y * _jumpPower,
+                WalkOrRun.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
+                _ => _rigidbody2D.linearVelocityY
+            };
             _isJump = false;
         }
         

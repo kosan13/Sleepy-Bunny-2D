@@ -120,6 +120,15 @@ namespace Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Value"",
+                    ""id"": ""102b1322-e9af-4700-a689-28ed3dd42ff8"",
+                    ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -177,6 +186,39 @@ namespace Input
                     ""action"": ""PushOrPull"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""14b905aa-21c2-44b8-9360-a4102aed20e0"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4cea4d0a-260f-4847-b219-fa8aab730240"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""3f872b6f-c2af-4c7f-ae34-7373406e84ec"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -188,6 +230,7 @@ namespace Input
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_PushOrPull = m_Player.FindAction("PushOrPull", throwIfNotFound: true);
+            m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         }
 
         ~@PlayerInputController()
@@ -271,6 +314,7 @@ namespace Input
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_PushOrPull;
+        private readonly InputAction m_Player_Run;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -294,6 +338,10 @@ namespace Input
             /// Provides access to the underlying input action "Player/PushOrPull".
             /// </summary>
             public InputAction @PushOrPull => m_Wrapper.m_Player_PushOrPull;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Run".
+            /// </summary>
+            public InputAction @Run => m_Wrapper.m_Player_Run;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -329,6 +377,9 @@ namespace Input
                 @PushOrPull.started += instance.OnPushOrPull;
                 @PushOrPull.performed += instance.OnPushOrPull;
                 @PushOrPull.canceled += instance.OnPushOrPull;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
 
             /// <summary>
@@ -349,6 +400,9 @@ namespace Input
                 @PushOrPull.started -= instance.OnPushOrPull;
                 @PushOrPull.performed -= instance.OnPushOrPull;
                 @PushOrPull.canceled -= instance.OnPushOrPull;
+                @Run.started -= instance.OnRun;
+                @Run.performed -= instance.OnRun;
+                @Run.canceled -= instance.OnRun;
             }
 
             /// <summary>
@@ -410,6 +464,13 @@ namespace Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPushOrPull(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Run" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRun(InputAction.CallbackContext context);
         }
     }
 }
