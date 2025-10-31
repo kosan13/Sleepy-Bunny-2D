@@ -39,20 +39,6 @@ namespace Player.Movement
         }
 
         public static void OnPushAndPull(bool relistButton = false) => _pushOrPull = _pushAndPullObject is not null && relistButton == false;
-
-        private static void OnPush()
-        {
-            AnimationsStateMachine.SetState(AnimationsStates.IsPushing);
-            Rigidbody2D rigidbody2D = _pushAndPullObject.GetComponent<Rigidbody2D>();
-            rigidbody2D.linearVelocityX = _rigidbody2D.linearVelocityX;
-        }
-        private static void OnPull()
-        {
-            AnimationsStateMachine.SetState(AnimationsStates.IsPulling);
-            Rigidbody2D rigidbody2D = _pushAndPullObject.GetComponent<Rigidbody2D>();
-            rigidbody2D.linearVelocityX = _rigidbody2D.linearVelocityX;
-        }
-
         private static void PushOrPull(AnimationsStates animationsStates)
         {
             Rigidbody2D rigidbody2D = _pushAndPullObject.GetComponent<Rigidbody2D>();

@@ -149,10 +149,11 @@ GameObject:
   - component: {fileID: 4905579503862221774}
   - component: {fileID: 5025853272783258329}
   - component: {fileID: 1008658918702676219}
+  - component: {fileID: 1970488452797023313}
   - component: {fileID: 6140072218337127797}
   m_Layer: 7
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,8 +216,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 10
   runSpeed: 17
+  crouchWalkPenalty: 2
+  crouchRunPenalty: 2
   jumpPower: 20
   runJumpPenalty: 1.25
+  playerCollider: {fileID: 1008658918702676219}
+  playerCrouchCollider: {fileID: 1970488452797023313}
 --- !u!70 &1008658918702676219
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -253,6 +258,43 @@ CapsuleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.2}
   m_Size: {x: 1.03, y: 3}
+  m_Direction: 0
+--- !u!70 &1970488452797023313
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768764931942942045}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.83}
+  m_Size: {x: 1.03, y: 1.75}
   m_Direction: 0
 --- !u!70 &6140072218337127797
 CapsuleCollider2D:
