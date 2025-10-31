@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Input;
 using static Player.Movement.Move;
@@ -35,29 +34,23 @@ namespace Player
             OnJumpAwake(_rigidbody2D, jumpPower, runJumpPenalty);
             OnPushAndPullAwake(_rigidbody2D);
         }
-
         private void OnEnable() => PlayerMap.Enable();
         private void OnDisable() => PlayerMap.Disable();
-
         private void Update()
         {
             OnMovementUpdate();
             OnJumpUpdate();
             OnPushAndPullUpdate();
         }
-
         private void FixedUpdate()
         {
             OnMovementFixedUpdate();
             OnJumpFixedUpdate();
             OnPushAndPullFixedUpdate();
         }
-        
         private void OnCollisionEnter2D(Collision2D other) => OnPushAndPullCollisionEnter2D(other);
         private void OnCollisionExit2D(Collision2D other) => OnPushAndPullCollisionExit2D(other);
-
         private void OnTriggerEnter2D(Collider2D other) => OnPushAndPullTriggerEnter2D(other);
-
         private void OnTriggerExit2D(Collider2D other) => OnPushAndPullOnTriggerExit2D(other);
 
 
@@ -76,16 +69,16 @@ namespace Player
             PlayerMap.PushOrPull.canceled += OnPushOrPullRelist;
         }
 
-        public static void OnMovePreset(CallbackContext callbackContext) => OnMove(callbackContext.ReadValue<float>());
+        private static void OnMovePreset(CallbackContext callbackContext) => OnMove(callbackContext.ReadValue<float>());
         private static void OnMoveRelist(CallbackContext callbackContext) => OnMove(0);
         
-        public static void OnRunPreset(CallbackContext callbackContext) => OnRun(callbackContext.ReadValue<float>());
+        private static void OnRunPreset(CallbackContext callbackContext) => OnRun(callbackContext.ReadValue<float>());
         private static void OnRunRelist(CallbackContext callbackContext) => OnRun(0);
         
         private static void OnJumpPreset(CallbackContext callbackContext) => OnJump(callbackContext.performed);
         private static void OnJumpRelist(CallbackContext callbackContext) => OnJump(false);
         
         private static void OnPushOrPullPreset(CallbackContext callbackContext) => OnPushAndPull();
-        private static void OnPushOrPullRelist(CallbackContext callbackContext) => OnPushAndPull();
+        private static void OnPushOrPullRelist(CallbackContext callbackContext) => OnPushAndPull(true);
     }
 }

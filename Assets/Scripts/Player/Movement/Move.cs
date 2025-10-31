@@ -1,10 +1,9 @@
-using System;
 using Animation;
 using UnityEngine;
 
 namespace Player.Movement
 {
-    public enum MoveStats
+    public enum MoveState
     {
         Walk,
         Run
@@ -14,12 +13,9 @@ namespace Player.Movement
         private static Rigidbody2D _rigidbody2D;
         private static float _walkSpeed;
         private static float _runSpeed;
-        
-        private static float _moveDirection;
-        public static float MoveDirection => _moveDirection;
 
-        private static MoveStats _moveStats;
-        public static MoveStats MoveStats => _moveStats;
+        public static float MoveDirection { get; private set; }
+        public static MoveState MoveState { get; private set; }
 
         public static void OnMovementAwake(Rigidbody2D rigidbody2D, float walkSpeed, float runSpeed)
         {
@@ -28,35 +24,29 @@ namespace Player.Movement
             _runSpeed = runSpeed;
         }
         public static void OnMovementUpdate() {}
-
-        public static void OnMovementFixedUpdate()
-        {
-            ApplyForces();
-        }
-        
+        public static void OnMovementFixedUpdate() => ApplyForces();
         public static void OnMove(float moveDirection)
         {
+            MoveDirection = moveDirection;
+            MoveState = MoveState.Walk;
             AnimationsStateMachine.SetState(AnimationsStates.IsWalking);
-            _moveDirection = moveDirection;
-            _moveStats = MoveStats.Walk;
         }
         public static void OnRun(float moveDirection)
         {
             if (!Jump.IsGrounded(_rigidbody2D)) OnMove(moveDirection);
-            
+            MoveDirection = moveDirection;
+            MoveState = moveDirection == 0 ? MoveState.Walk : MoveState.Run;
             AnimationsStateMachine.SetState(AnimationsStates.IsRunning);
-            _moveDirection = moveDirection;
-            _moveStats = moveDirection == 0 ? MoveStats.Walk : MoveStats.Run;
         }
 
         private static void ApplyForces()
         {
-            Debug.Log("Move stat is Value: " + _moveStats);
+            Debug.Log("MoveState is Value: " + MoveState);
             // Move Force
-            _rigidbody2D.linearVelocityX = _moveStats switch
+            _rigidbody2D.linearVelocityX = MoveState switch
             {
-                MoveStats.Walk => _moveDirection * _walkSpeed,
-                MoveStats.Run => _moveDirection * _runSpeed,
+                MoveState.Walk => MoveDirection * _walkSpeed,
+                MoveState.Run => MoveDirection * _runSpeed,
                 _ => _rigidbody2D.linearVelocityX
             };
         }

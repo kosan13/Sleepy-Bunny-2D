@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4905579503862221774}
   - component: {fileID: 5025853272783258329}
   - component: {fileID: 1008658918702676219}
-  - component: {fileID: 8834816190913653444}
+  - component: {fileID: 6140072218337127797}
   m_Layer: 7
   m_Name: player
   m_TagString: Untagged
@@ -213,10 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41213ec812150c146931daee69d65c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 13
-  runSpeed: 15
+  walkSpeed: 10
+  runSpeed: 17
   jumpPower: 20
-  runJumpPenalty: 2
+  runJumpPenalty: 1.25
 --- !u!70 &1008658918702676219
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -254,8 +254,8 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.2}
   m_Size: {x: 1.03, y: 3}
   m_Direction: 0
---- !u!58 &8834816190913653444
-CircleCollider2D:
+--- !u!70 &6140072218337127797
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -288,8 +288,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1.6
+  m_Offset: {x: 0, y: -0.2}
+  m_Size: {x: 2, y: 4}
+  m_Direction: 0
 --- !u!1001 &1585855068836231866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -822,7 +823,7 @@ Animator:
   m_GameObject: {fileID: 1289675563830795015}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f476fc869791e774da61a93155648dda, type: 2}
+  m_Controller: {fileID: 9100000, guid: c216d79ba9fa6424b89fd0d58278e33c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

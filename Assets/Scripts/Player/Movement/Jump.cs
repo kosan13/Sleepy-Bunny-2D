@@ -15,7 +15,6 @@ namespace Player.Movement
         /// GroundLayerMask is the layer the Ground tag is on in the UnityEditor
         /// </summary>
         private const int GroundLayerMask = 3;
-        private const int RayCastLength = 1000;
         
         public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower, float runJumpPenalty)
         {
@@ -25,15 +24,14 @@ namespace Player.Movement
             _isJump = false;
         }
         public static void OnJumpUpdate() {}
-
         public static void OnJumpFixedUpdate()
         {
             if (_isJump == false) { _rigidbody2D.linearVelocityY += 0; return; }
 
-            _rigidbody2D.linearVelocityY += Move.MoveStats switch
+            _rigidbody2D.linearVelocityY += Move.MoveState switch
             {
-                MoveStats.Walk => Vector2.up.y * _jumpPower,
-                MoveStats.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
+                MoveState.Walk => Vector2.up.y * _jumpPower,
+                MoveState.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
                 _ => _rigidbody2D.linearVelocityY
             };
             _isJump = false;
@@ -56,7 +54,7 @@ namespace Player.Movement
         public static bool IsGrounded(Rigidbody2D rigidbody2D)
         {
             const float groundedDistance = 3f;
-            Vector2 position = rigidbody2D.transform.position;
+            Vector2 position = rigidbody2D.position;
 
             Debug.Log(LayerMask.NameToLayer("Ground"));
             Debug.DrawLine(position, new Vector2(position.x ,position.y + Vector2.down.y * groundedDistance), Color.black, 1000);
