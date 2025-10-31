@@ -13,14 +13,26 @@ namespace Player
         [Header("Move")]
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
+        
+        [Header("crouch")]
+        [Tooltip("The number you divide the 'walkSpeed' by when you crouch")]
+        [SerializeField] private float crouchWalkPenalty;
+        [Tooltip("The number you divide the 'runSpeed' by when you crouch")]
+        [SerializeField] private float crouchRunPenalty;
+        
         [Header("Jump")]
         [SerializeField] private float jumpPower;
         [Tooltip("The number you divide the 'jumpPower' by")]
         [SerializeField] private float runJumpPenalty;
-        
-        private PlayerInputController _inputControls;
-        private Rigidbody2D _rigidbody2D;
 
+        [Header("Colliders")] 
+        [Tooltip("Players main collider")]
+        [SerializeField] private CapsuleCollider2D playerCollider;
+        [Tooltip("Players collider when crouching")]
+        [SerializeField] private CapsuleCollider2D playerCrouchCollider;
+        
+        private Rigidbody2D _rigidbody2D;
+        private PlayerInputController _inputControls;
         private PlayerInputController.PlayerActions PlayerMap => _inputControls.Player;
 
         private void Awake()
@@ -30,7 +42,7 @@ namespace Player
             
             _rigidbody2D = GetComponent<Rigidbody2D>();
 
-            OnMovementAwake(_rigidbody2D, walkSpeed, runSpeed);
+            OnMovementAwake(_rigidbody2D, playerCollider, playerCrouchCollider, walkSpeed, runSpeed, crouchWalkPenalty, crouchRunPenalty);
             OnJumpAwake(_rigidbody2D, jumpPower, runJumpPenalty);
             OnPushAndPullAwake(_rigidbody2D);
         }
@@ -52,8 +64,7 @@ namespace Player
         private void OnCollisionExit2D(Collision2D other) => OnPushAndPullCollisionExit2D(other);
         private void OnTriggerEnter2D(Collider2D other) => OnPushAndPullTriggerEnter2D(other);
         private void OnTriggerExit2D(Collider2D other) => OnPushAndPullOnTriggerExit2D(other);
-
-
+        
         private void MovementControlsBind()
         {
             PlayerMap.Move.performed += OnMovePreset;
@@ -67,10 +78,13 @@ namespace Player
 
             PlayerMap.PushOrPull.performed += OnPushOrPullPreset;
             PlayerMap.PushOrPull.canceled += OnPushOrPullRelist;
+            
+            PlayerMap.Crouch.performed += OnCrouchPreset;
+            PlayerMap.Crouch.canceled += OnCrouchRelist;
         }
 
-        private static void OnMovePreset(CallbackContext callbackContext) => OnMove(callbackContext.ReadValue<float>());
-        private static void OnMoveRelist(CallbackContext callbackContext) => OnMove(0);
+        private static void OnMovePreset(CallbackContext callbackContext) => OnWalk(callbackContext.ReadValue<float>());
+        private static void OnMoveRelist(CallbackContext callbackContext) => OnWalk(0);
         
         private static void OnRunPreset(CallbackContext callbackContext) => OnRun(callbackContext.ReadValue<float>());
         private static void OnRunRelist(CallbackContext callbackContext) => OnRun(0);
@@ -80,5 +94,8 @@ namespace Player
         
         private static void OnPushOrPullPreset(CallbackContext callbackContext) => OnPushAndPull();
         private static void OnPushOrPullRelist(CallbackContext callbackContext) => OnPushAndPull(true);
+        
+        private static void OnCrouchPreset(CallbackContext callbackContext) => OnCrouch();
+        private static void OnCrouchRelist(CallbackContext callbackContext) => OnCrouch(true);
     }
 }
