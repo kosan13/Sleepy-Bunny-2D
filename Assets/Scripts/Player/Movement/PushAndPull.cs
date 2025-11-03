@@ -8,18 +8,20 @@ namespace Player.Movement
         private const int PushAndPullObjectLayer = 6;
         
         private static Rigidbody2D _rigidbody2D;
-        private static bool _pushOrPull;
         private static GameObject _pushAndPullObject;
+
+        public static bool PushOrPull { get; private set; }
 
         public static void OnPushAndPullAwake(Rigidbody2D rigidbody2D) => _rigidbody2D = rigidbody2D;
         public static void OnPushAndPullUpdate() {}
         public static void OnPushAndPullFixedUpdate()
         {
-            if (!_pushOrPull) return;
-            switch (Move.MoveDirection)
+            if (!PushOrPull) return;
+            switch (Move.GetMoveDirection)
             {
-                case > 0: PushOrPull(AnimationsStates.IsPushing); break;
-                case < 0: PushOrPull(AnimationsStates.IsPulling); break;
+                case > 0: OnPushOrPull(AnimationsStates.IsPushing); break;
+                case < 0: OnPushOrPull(AnimationsStates.IsPulling); break;
+                default: OnPushOrPull(AnimationsStates.IsPulling); break;
             }
         }
         public static void OnPushAndPullCollisionEnter2D(Collision2D other) {}
@@ -35,11 +37,11 @@ namespace Player.Movement
             if (other.gameObject.layer != _pushAndPullObject.layer) return;
             _pushAndPullObject.GetComponent<Rigidbody2D>().linearVelocityX = 0;
             _pushAndPullObject = null;
-            _pushOrPull = false;
+            PushOrPull = false;
         }
 
-        public static void OnPushAndPull(bool relistButton = false) => _pushOrPull = _pushAndPullObject is not null && relistButton == false;
-        private static void PushOrPull(AnimationsStates animationsStates)
+        public static void OnPushAndPull(bool relistButton = false) => PushOrPull = _pushAndPullObject is not null && relistButton == false;
+        private static void OnPushOrPull(AnimationsStates animationsStates)
         {
             Rigidbody2D rigidbody2D = _pushAndPullObject.GetComponent<Rigidbody2D>();
             rigidbody2D.linearVelocityX = _rigidbody2D.linearVelocityX;
