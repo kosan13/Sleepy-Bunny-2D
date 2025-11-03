@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8391690165514972989}
   - component: {fileID: 3815621429741077856}
   - component: {fileID: 3716355664383288769}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bed prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
