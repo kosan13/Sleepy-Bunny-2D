@@ -45,3 +45,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  machineStates:
+  - animationsState: 0
+    triggerParameter: IsIdling
+  - animationsState: 1
+    triggerParameter: IsPushing
+  - animationsState: 2
+    triggerParameter: IsPulling
+  - animationsState: 3
+    triggerParameter: IsWalking
+  - animationsState: 4
+    triggerParameter: IsRunning
+  - animationsState: 5
+    triggerParameter: IsCrouchWalk
+  - animationsState: 6
+    triggerParameter: IsCrouchRun
+  - animationsState: 7
+    triggerParameter: IsJumping
+  - animationsState: 8
+    triggerParameter: IsFalling
+  - animationsState: 9
+    triggerParameter: IsLanding

@@ -10,8 +10,8 @@ namespace Animation
         IsWalking,
         IsRunning,
         
-        CrouchWalk,
-        CrouchRun,
+        IsCrouchWalk,
+        IsCrouchRun,
         
         IsJumping,
         

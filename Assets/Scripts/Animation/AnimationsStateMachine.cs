@@ -1,53 +1,102 @@
+using System.Runtime.CompilerServices;
+using Player;
+using Player.Movement;
 using UnityEngine;
 
 namespace Animation
 {
-    public class AnimationsStateMachine : MonoBehaviour
+    public partial class AnimationsStateMachine : MonoBehaviour
     {
         [SerializeField] private Animator animator;
-        
-        #region Animation Hash
-        private static int _idlingHash;
-        private static int _pushingHash;
-        private static int _pullingHash;
-        private static int _walkingHash;
-        private static int _runningHash;
-        private static int _jumpingHash;
-        private static int _fallingHash;
-        private static int _landingHash;
-        #endregion Animation Hash
+        [SerializeField] private AnimationMachineStates[] machineStates;
         
         private static AnimationsStateMachine _stateMachine;
-        private void OnEnable() => _stateMachine = this;
-        private void OnDisable() => _stateMachine = _stateMachine == this ? null : _stateMachine;
         
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void OnEnable() => _stateMachine = this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void OnDisable() => _stateMachine = _stateMachine == this ? null : _stateMachine;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void OnValidate() { if (animator is null) Debug.LogWarning("animator is null in the AnimationsStateMachine"); }
-        private void Start()
-        { 
-            _idlingHash = Animator.StringToHash("IsIdling"); 
-            _pushingHash = Animator.StringToHash("IsPushing"); 
-            _pullingHash = Animator.StringToHash("IsPulling"); 
-            _walkingHash = Animator.StringToHash("IsWalking");
-            _runningHash = Animator.StringToHash("IsRunning");
-            _jumpingHash = Animator.StringToHash("IsJumping");
-            _fallingHash = Animator.StringToHash("IsFalling");
-            _landingHash = Animator.StringToHash("IsLanding");
-        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void Start() { foreach (AnimationMachineStates state in _stateMachine.machineStates) state.GenerateHash(); }
 
-        public static void SetState(AnimationsStates newState)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetState(AnimationsStates newState) { foreach (AnimationMachineStates state in _stateMachine.machineStates) state.Poll(newState); }
+        
+
+
+        public static bool TrySetStateIsIdling()
         {
-            switch(newState)
-            {
-                case AnimationsStates.IsIdling: _stateMachine.animator.SetTrigger(_idlingHash); break;
-                case AnimationsStates.IsPushing: _stateMachine.animator.SetTrigger(_pushingHash); break;
-                case AnimationsStates.IsPulling: _stateMachine.animator.SetTrigger(_pullingHash); break;
-                case AnimationsStates.IsWalking: _stateMachine.animator.SetTrigger(_walkingHash); break;
-                case AnimationsStates.IsRunning: _stateMachine.animator.SetTrigger(_runningHash); break;
-                case AnimationsStates.IsJumping: _stateMachine.animator.SetTrigger(_jumpingHash); break;
-                case AnimationsStates.IsFalling: _stateMachine.animator.SetTrigger(_fallingHash); break;
-                case AnimationsStates.IsLanding: _stateMachine.animator.SetTrigger(_landingHash); break;
-                default: Debug.LogError("State is not implemented! State is: " + newState); break;
-            }
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetState(AnimationsStates.IsIdling);
+            return true;
+        }
+        public static bool TrySetStateIsPushing()
+        {
+            if (!PushAndPull.PushOrPull) return false;
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (true) return false;
+            SetState(AnimationsStates.IsPushing);
+            return true;
+        }
+        public static bool TrySetStateIsPulling()
+        {
+            if (!PushAndPull.PushOrPull) return false;
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (true) return false;
+            SetState(AnimationsStates.IsPulling);
+            return true;
+        }
+        public static bool TrySetStateIsWalking()
+        {
+            Rigidbody2D rigidbody2D = PlayerController.GetPlayerController.GetRigidbody2D;
+            if (!Jump.IsGrounded(rigidbody2D)) return false;
+            if (rigidbody2D.linearVelocityX == 0) return false;
+            SetState(AnimationsStates.IsWalking);
+            return true;
+        }
+        public static bool TrySetStateIsRunning()
+        {
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (true) return false;
+            SetState(AnimationsStates.IsRunning);
+            return true;
+        }
+        public static bool TrySetStateCrouchWalk()
+        {
+            if (!Move.GetIsCrouching) return false;
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            SetState(AnimationsStates.IsCrouchWalk);
+            return true;
+        }
+        public static bool TrySetStateCrouchRun()
+        {
+            if (!Move.GetIsCrouching) return false;
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (true) return false;
+            SetState(AnimationsStates.IsCrouchRun);
+            return true;
+        }
+        public static bool TrySetStateIsJumping()
+        {
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!Jump.GetIsJumping) return false;
+            SetState(AnimationsStates.IsJumping);
+            return true;
+        }
+        public static bool TrySetStateIsFalling()
+        {
+            if (Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            SetState(AnimationsStates.IsFalling);
+            return true;
+        }
+        public static bool TrySetStateIsLanding()
+        {
+            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            SetState(AnimationsStates.IsLanding);
+            return true;
         }
     }
 }
