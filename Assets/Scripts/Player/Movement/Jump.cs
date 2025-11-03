@@ -1,4 +1,4 @@
-using System;
+using System.Runtime.CompilerServices;
 using Animation;
 using UnityEngine;
 
@@ -6,48 +6,54 @@ namespace Player.Movement
 {
     public static class Jump
     {
-        private static Rigidbody2D _rigidbody2D;
-        private static float _jumpPower;
-        private static float _runJumpPenalty;
-        private static bool _isJump;
-        
         /// <summary>
         /// GroundLayerMask is the layer the Ground tag is on in the UnityEditor
         /// </summary>
-        private const int GroundLayerMask = 3;
+        private const int GroundLayerMask = 0b00000000000000000000000000001000; // layer 3 in bits 
         
-        public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower, float runJumpPenalty)
+        private static Rigidbody2D _rigidbody2D;
+        private static float _jumpPower;
+        private static float _runJumpPenalty;
+        private static float _runJumpMomentumBoost;
+
+        public static bool GetIsJumping { get; private set; }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower, float runJumpPenalty, float runJumpMomentumBoost)
         {
             _rigidbody2D = rigidbody2D;
             _jumpPower = jumpPower;
             _runJumpPenalty = runJumpPenalty;
-            _isJump = false;
+            GetIsJumping = false;
+            _runJumpMomentumBoost = runJumpMomentumBoost;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnJumpUpdate() {}
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnJumpFixedUpdate()
         {
-            if (_isJump == false) { _rigidbody2D.linearVelocityY += 0; return; }
+            if (GetIsJumping == false) { _rigidbody2D.linearVelocityY += 0; return; }
 
-            _rigidbody2D.linearVelocityY += Move.MoveState switch
+            _rigidbody2D.linearVelocity += Move.GetMoveState switch
             {
-                MoveState.Walk => Vector2.up.y * _jumpPower,
-                MoveState.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
-                _ => _rigidbody2D.linearVelocityY
+                MoveState.Walk => new Vector2(0, Vector2.up.y * _jumpPower),
+                MoveState.Run => new Vector2(_runJumpMomentumBoost, Vector2.up.y * (_jumpPower / _runJumpPenalty)),
+                _ => _rigidbody2D.linearVelocity
             };
-            _isJump = false;
+            GetIsJumping = false;
         }
         
         public static void OnJump(bool jump)
         {
-            if (jump == false) { _isJump = false; return; }
+            if (jump == false) { GetIsJumping = false; return; }
             
             if (!IsGrounded(_rigidbody2D))
             {
                 Debug.LogError("IsGrounded is False"); 
-                _isJump = false;
+                GetIsJumping = false;
                 return;
             }
-            _isJump = true;
+            GetIsJumping = true;
             AnimationsStateMachine.SetState(AnimationsStates.IsJumping);
         }
         
@@ -58,7 +64,7 @@ namespace Player.Movement
 
             Debug.Log(LayerMask.NameToLayer("Ground"));
             Debug.DrawLine(position, new Vector2(position.x ,position.y + Vector2.down.y * groundedDistance), Color.black, 1000);
-            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, groundedDistance);
+            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, groundedDistance, GroundLayerMask);
             return hit.transform is not null;
         }
     }

@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Animation;
 using UnityEngine;
 
@@ -20,11 +21,12 @@ namespace Player.Movement
         private static float _crouchWalkPenalty;
         private static float _crouchRunPenalty;
 
-        private static bool _crouching;
-        
-        public static float MoveDirection { get; private set; }
-        public static MoveState MoveState { get; private set; }
+        public static float GetMoveDirection { get; private set; }
+        public static MoveState GetMoveState { get; private set; }
+        public static bool GetIsCrouching { get; private set; }
 
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnMovementAwake(Rigidbody2D rigidbody2D, CapsuleCollider2D playerCollider, CapsuleCollider2D playerCrouchCollider, float walkSpeed, float runSpeed, float crouchWalkPenalty, float crouchRunPenalty)
         {
             _rigidbody2D = rigidbody2D;
@@ -35,42 +37,45 @@ namespace Player.Movement
             _crouchWalkPenalty = crouchWalkPenalty;
             _crouchRunPenalty = crouchRunPenalty;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnMovementUpdate() {}
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnMovementFixedUpdate() => ApplyForces();
+        
         public static void OnWalk(float moveDirection)
         {
-            MoveDirection = moveDirection;
+            GetMoveDirection = moveDirection;
             
-            if (_crouching)
+            if (GetIsCrouching)
             {
-                MoveState = MoveState.CrouchWalk;
-                AnimationsStateMachine.SetState(AnimationsStates.CrouchWalk);
+                GetMoveState = MoveState.CrouchWalk;
+                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchWalk);
                 return;
             }
             
-            MoveState = MoveState.Walk;
+            GetMoveState = MoveState.Walk;
             AnimationsStateMachine.SetState(AnimationsStates.IsWalking);
         }
         public static void OnRun(float moveDirection)
         {
             if (!Jump.IsGrounded(_rigidbody2D)) OnWalk(moveDirection);
-            MoveDirection = moveDirection;
+            GetMoveDirection = moveDirection;
             
-            if (_crouching)
+            if (GetIsCrouching)
             {
-                MoveState = moveDirection == 0 ? MoveState.CrouchWalk : MoveState.CrouchRun;
-                AnimationsStateMachine.SetState(AnimationsStates.CrouchRun);
+                GetMoveState = moveDirection == 0 ? MoveState.CrouchWalk : MoveState.CrouchRun;
+                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchRun);
                 return;
             }
             
-            MoveState = moveDirection == 0 ? MoveState.Walk : MoveState.Run;
+            GetMoveState = moveDirection == 0 ? MoveState.Walk : MoveState.Run;
             AnimationsStateMachine.SetState(AnimationsStates.IsRunning);
         }
         public static void OnCrouch(bool relistButton = false)
         {
             if (relistButton) return;
-            _crouching = !_crouching;
-            if (_crouching)
+            GetIsCrouching = !GetIsCrouching;
+            if (GetIsCrouching)
             {
                 _playerCollider.enabled = false;
                 _playerCrouchCollider.enabled = true;
@@ -84,14 +89,14 @@ namespace Player.Movement
 
         private static void ApplyForces()
         {
-            Debug.Log("MoveState is Value: " + MoveState);
+            Debug.Log("MoveState is Value: " + GetMoveState);
             // Move Force
-            _rigidbody2D.linearVelocityX = MoveState switch
+            _rigidbody2D.linearVelocityX = GetMoveState switch
             {
-                MoveState.Walk => MoveDirection * _walkSpeed,
-                MoveState.Run => MoveDirection * _runSpeed,
-                MoveState.CrouchWalk => MoveDirection * _walkSpeed / _crouchWalkPenalty,
-                MoveState.CrouchRun => MoveDirection * _runSpeed / _crouchRunPenalty,
+                MoveState.Walk => GetMoveDirection * _walkSpeed,
+                MoveState.Run => GetMoveDirection * _runSpeed,
+                MoveState.CrouchWalk => GetMoveDirection * _walkSpeed / _crouchWalkPenalty,
+                MoveState.CrouchRun => GetMoveDirection * _runSpeed / _crouchRunPenalty,
                 _ => _rigidbody2D.linearVelocityX
             };
         }
