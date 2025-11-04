@@ -1,13 +1,16 @@
 using UnityEngine;
+using static Animation.AnimationsStateMachine;
 
 namespace Animation
 {
-    public class PullingAnimation : StateMachineBehaviour
+    public class FallingAnimation : StateMachineBehaviour
     {
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            AnimationsStateMachine.SetState(AnimationsStates.IsIdling);
+            if (TrySetStateIsFalling()) return;
+            if (TrySetStateIsLanding()) return;
+            return;
         }
     }
 }
