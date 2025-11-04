@@ -34,12 +34,15 @@ namespace Player.Movement
         {
             if (GetIsJumping == false) { _rigidbody2D.linearVelocityY += 0; return; }
 
-            _rigidbody2D.linearVelocity += Move.GetMoveState switch
+            _rigidbody2D.linearVelocityY += Move.GetMoveState switch
             {
-                MoveState.Walk => new Vector2(0, Vector2.up.y * _jumpPower),
-                MoveState.Run => new Vector2(_runJumpMomentumBoost, Vector2.up.y * (_jumpPower / _runJumpPenalty)),
-                _ => _rigidbody2D.linearVelocity
+                MoveState.Walk => Vector2.up.y * _jumpPower,
+                MoveState.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
+                _ => _rigidbody2D.linearVelocityY
             };
+            if (Move.GetMoveState == MoveState.Run) 
+                _rigidbody2D.AddForceX(Move.GetMoveDirection * (_runJumpMomentumBoost * _rigidbody2D.mass), ForceMode2D.Impulse);
+            
             GetIsJumping = false;
         }
         
@@ -59,12 +62,14 @@ namespace Player.Movement
         
         public static bool IsGrounded(Rigidbody2D rigidbody2D)
         {
-            const float groundedDistance = 3f;
+            const float groundedDistance = 2f;
             Vector2 position = rigidbody2D.position;
-
-            Debug.Log(LayerMask.NameToLayer("Ground"));
-            Debug.DrawLine(position, new Vector2(position.x ,position.y + Vector2.down.y * groundedDistance), Color.black, 1000);
+            
             RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, groundedDistance, GroundLayerMask);
+            #if UNITY_EDITOR
+            if (hit.transform is not null) 
+                Debug.DrawLine(position, new Vector2(position.x ,position.y + Vector2.down.y * groundedDistance), Color.black, 1000);
+            #endif
             return hit.transform is not null;
         }
     }
