@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using Events;
 using UnityEngine;
 using Input;
 using static Player.Movement.Move;
@@ -9,22 +10,19 @@ using static UnityEngine.InputSystem.InputAction;
 namespace Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IDeathEvent
     {
         [Header("Move")]
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
         
         [Header("crouch")]
-        [Tooltip("The number you divide the 'walkSpeed' by when you crouch")]
-        [SerializeField] private float crouchWalkPenalty;
-        [Tooltip("The number you divide the 'runSpeed' by when you crouch")]
-        [SerializeField] private float crouchRunPenalty;
+        [SerializeField] private float crouchWalkSpeed;
+        [SerializeField] private float crouchRunSpeed;
         
         [Header("Jump")]
         [SerializeField] private float jumpPower;
-        [Tooltip("The number you divide the 'jumpPower' by")]
-        [SerializeField] private float runJumpPenalty;
+        [SerializeField] private float runJumpPower;
         [Tooltip("The number you add to the linearVelocity.x on a runJump")]
         [SerializeField] private float runJumpMomentumBoost;
 
@@ -48,8 +46,8 @@ namespace Player
             
             GetRigidbody2D = GetComponent<Rigidbody2D>();
 
-            OnMovementAwake(GetRigidbody2D, playerCollider, playerCrouchCollider, walkSpeed, runSpeed, crouchWalkPenalty, crouchRunPenalty);
-            OnJumpAwake(GetRigidbody2D, jumpPower, runJumpPenalty, runJumpMomentumBoost);
+            OnMovementAwake(GetRigidbody2D, playerCollider, playerCrouchCollider, walkSpeed, runSpeed, crouchWalkSpeed, crouchRunSpeed);
+            OnJumpAwake(GetRigidbody2D, jumpPower, runJumpPower, runJumpMomentumBoost);
             OnPushAndPullAwake(GetRigidbody2D);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -131,5 +129,12 @@ namespace Player
         private static void OnCrouchPreset(CallbackContext callbackContext) => OnCrouch();
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void OnCrouchRelist(CallbackContext callbackContext) => OnCrouch(true);
+
+        
+        
+        public void TriggerDeathEvent()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

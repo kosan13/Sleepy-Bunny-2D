@@ -18,8 +18,8 @@ namespace Player.Movement
         private static CapsuleCollider2D _playerCrouchCollider;
         private static float _walkSpeed;
         private static float _runSpeed;
-        private static float _crouchWalkPenalty;
-        private static float _crouchRunPenalty;
+        private static float _crouchWalkSpeed;
+        private static float _crouchRunSpeed;
 
         public static float GetMoveDirection { get; private set; }
         public static MoveState GetMoveState { get; private set; }
@@ -27,15 +27,15 @@ namespace Player.Movement
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void OnMovementAwake(Rigidbody2D rigidbody2D, CapsuleCollider2D playerCollider, CapsuleCollider2D playerCrouchCollider, float walkSpeed, float runSpeed, float crouchWalkPenalty, float crouchRunPenalty)
+        public static void OnMovementAwake(Rigidbody2D rigidbody2D, CapsuleCollider2D playerCollider, CapsuleCollider2D playerCrouchCollider, float walkSpeed, float runSpeed, float crouchWalkSpeed, float crouchRunSpeed)
         {
             _rigidbody2D = rigidbody2D;
             _playerCollider = playerCollider;
             _playerCrouchCollider = playerCrouchCollider;
             _walkSpeed = walkSpeed;
             _runSpeed = runSpeed;
-            _crouchWalkPenalty = crouchWalkPenalty;
-            _crouchRunPenalty = crouchRunPenalty;
+            _crouchWalkSpeed = crouchWalkSpeed;
+            _crouchRunSpeed = crouchRunSpeed;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnMovementUpdate() {}
@@ -95,8 +95,8 @@ namespace Player.Movement
             {
                 MoveState.Walk => GetMoveDirection * _walkSpeed,
                 MoveState.Run => GetMoveDirection * _runSpeed,
-                MoveState.CrouchWalk => GetMoveDirection * _walkSpeed / _crouchWalkPenalty,
-                MoveState.CrouchRun => GetMoveDirection * _runSpeed / _crouchRunPenalty,
+                MoveState.CrouchWalk => GetMoveDirection * _crouchWalkSpeed,
+                MoveState.CrouchRun => GetMoveDirection * _crouchRunSpeed,
                 _ => _rigidbody2D.linearVelocityX
             };
         }

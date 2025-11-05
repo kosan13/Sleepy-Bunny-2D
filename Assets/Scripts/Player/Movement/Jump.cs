@@ -13,17 +13,17 @@ namespace Player.Movement
         
         private static Rigidbody2D _rigidbody2D;
         private static float _jumpPower;
-        private static float _runJumpPenalty;
+        private static float _runJumpPower;
         private static float _runJumpMomentumBoost;
 
         public static bool GetIsJumping { get; private set; }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower, float runJumpPenalty, float runJumpMomentumBoost)
+        public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower, float runJumpPower, float runJumpMomentumBoost)
         {
             _rigidbody2D = rigidbody2D;
             _jumpPower = jumpPower;
-            _runJumpPenalty = runJumpPenalty;
+            _runJumpPower = runJumpPower;
             GetIsJumping = false;
             _runJumpMomentumBoost = runJumpMomentumBoost;
         }
@@ -37,7 +37,7 @@ namespace Player.Movement
             _rigidbody2D.linearVelocityY += Move.GetMoveState switch
             {
                 MoveState.Walk => Vector2.up.y * _jumpPower,
-                MoveState.Run => Vector2.up.y * (_jumpPower / _runJumpPenalty),
+                MoveState.Run => Vector2.up.y * (_runJumpPower),
                 _ => _rigidbody2D.linearVelocityY
             };
             if (Move.GetMoveState == MoveState.Run) 
