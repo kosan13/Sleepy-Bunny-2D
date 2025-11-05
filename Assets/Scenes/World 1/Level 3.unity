@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Big box
       objectReference: {fileID: 0}
+    - target: {fileID: 2439567347990200772, guid: 78d6dc5f9c9339646bada8c0ce95ee4e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -187,7 +191,7 @@ GameObject:
   - component: {fileID: 63728120}
   - component: {fileID: 63728119}
   - component: {fileID: 63728118}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: stove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176640627}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ------------------Level------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +424,7 @@ GameObject:
   - component: {fileID: 225068015}
   - component: {fileID: 225068014}
   - component: {fileID: 225068013}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shelf (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +561,7 @@ GameObject:
   - component: {fileID: 269618608}
   - component: {fileID: 269618607}
   - component: {fileID: 269618606}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stairs (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,6 +699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scarf
       objectReference: {fileID: 0}
+    - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6220335423282565050, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_LocalScale.y
       value: 35.09112
@@ -755,7 +763,7 @@ GameObject:
   - component: {fileID: 283920527}
   - component: {fileID: 283920526}
   - component: {fileID: 283920525}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: sink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,6 +900,10 @@ PrefabInstance:
     - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_Name
       value: Scarf (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6220335423282565050, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_LocalScale.y
@@ -1095,7 +1107,7 @@ GameObject:
   - component: {fileID: 436820764}
   - component: {fileID: 436820763}
   - component: {fileID: 436820762}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cat food box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,7 +1243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467022068}
   - component: {fileID: 467022067}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glass (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1387,7 +1399,7 @@ GameObject:
   - component: {fileID: 493133508}
   - component: {fileID: 493133507}
   - component: {fileID: 493133506}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1524,7 +1536,7 @@ GameObject:
   - component: {fileID: 566502120}
   - component: {fileID: 566502119}
   - component: {fileID: 566502121}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1702,6 +1714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_small
       objectReference: {fileID: 0}
+    - target: {fileID: 6118013124900638494, guid: 04986c1e2977e8942aa046edfe026ad1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1783,7 +1799,7 @@ GameObject:
   - component: {fileID: 641899181}
   - component: {fileID: 641899180}
   - component: {fileID: 641899179}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: toilet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1985,7 +2001,7 @@ GameObject:
   - component: {fileID: 828257784}
   - component: {fileID: 828257783}
   - component: {fileID: 828257782}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ventalation (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2122,7 +2138,7 @@ GameObject:
   - component: {fileID: 854001042}
   - component: {fileID: 854001041}
   - component: {fileID: 854001040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Controller for washing machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2258,7 +2274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883913690}
   - component: {fileID: 883913689}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2478,7 +2494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993675984}
   - component: {fileID: 993675983}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Laundry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2570,6 +2586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scarf (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6220335423282565050, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_LocalScale.y
       value: 36.154427
@@ -2631,6 +2651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scarf (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6220335423282565050, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_LocalScale.y
       value: 11.1304655
@@ -2691,7 +2715,7 @@ GameObject:
   - component: {fileID: 1150998093}
   - component: {fileID: 1150998092}
   - component: {fileID: 1150998091}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shelf (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2826,7 +2850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1164898508}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: -------------Kitchen-----------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2859,7 +2883,7 @@ GameObject:
   - component: {fileID: 1259115997}
   - component: {fileID: 1259115996}
   - component: {fileID: 1259115995}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Don't know
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2996,7 +3020,7 @@ GameObject:
   - component: {fileID: 1280621920}
   - component: {fileID: 1280621919}
   - component: {fileID: 1280621918}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cabnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3199,6 +3223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mural/ wool painting
       objectReference: {fileID: 0}
+    - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6220335423282565050, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_LocalScale.x
       value: 16.46348
@@ -3263,7 +3291,7 @@ GameObject:
   - component: {fileID: 1349375552}
   - component: {fileID: 1349375551}
   - component: {fileID: 1349375550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3399,7 +3427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1353537296}
   - component: {fileID: 1353537295}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glass (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3527,6 +3555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
+      propertyPath: runJumpMomentumBoost
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7768764931942942045, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: m_Name
       value: player
@@ -3612,7 +3644,7 @@ GameObject:
   - component: {fileID: 1461469201}
   - component: {fileID: 1461469200}
   - component: {fileID: 1461469199}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Kitchen counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3749,7 +3781,7 @@ GameObject:
   - component: {fileID: 1462423651}
   - component: {fileID: 1462423650}
   - component: {fileID: 1462423649}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3885,7 +3917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1481773000}
   - component: {fileID: 1481772999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glass (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3976,6 +4008,10 @@ PrefabInstance:
     - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_Name
       value: Scarf (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079161835578403021, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6220335423282565050, guid: 40f591cb214e8da43b1f08142566e216, type: 3}
       propertyPath: m_LocalScale.y
@@ -4078,6 +4114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_small (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6118013124900638494, guid: 04986c1e2977e8942aa046edfe026ad1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4094,7 +4134,7 @@ GameObject:
   - component: {fileID: 1631167747}
   - component: {fileID: 1631167746}
   - component: {fileID: 1631167745}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Washing machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4231,7 +4271,7 @@ GameObject:
   - component: {fileID: 1657311571}
   - component: {fileID: 1657311570}
   - component: {fileID: 1657311569}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4445,7 +4485,7 @@ GameObject:
   - component: {fileID: 1666303338}
   - component: {fileID: 1666303337}
   - component: {fileID: 1666303339}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4582,7 +4622,7 @@ GameObject:
   - component: {fileID: 1669470456}
   - component: {fileID: 1669470455}
   - component: {fileID: 1669470457}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4717,7 +4757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1732716345}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ------------Bathroom------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4856,6 +4896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_small (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6118013124900638494, guid: 04986c1e2977e8942aa046edfe026ad1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4872,7 +4916,7 @@ GameObject:
   - component: {fileID: 1873415047}
   - component: {fileID: 1873415046}
   - component: {fileID: 1873415045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ventalation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5074,7 +5118,7 @@ GameObject:
   - component: {fileID: 1985854542}
   - component: {fileID: 1985854541}
   - component: {fileID: 1985854543}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stairs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5210,7 +5254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2014045729}
   - component: {fileID: 2014045728}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5367,7 +5411,7 @@ GameObject:
   - component: {fileID: 2093349639}
   - component: {fileID: 2093349638}
   - component: {fileID: 2093349637}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cabnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5504,7 +5548,7 @@ GameObject:
   - component: {fileID: 2142658226}
   - component: {fileID: 2142658225}
   - component: {fileID: 2142658224}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: saucepan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
