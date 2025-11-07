@@ -214,12 +214,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41213ec812150c146931daee69d65c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  safeFallVelocity: 100000
   walkSpeed: 10
   runSpeed: 17
-  crouchWalkPenalty: 2
-  crouchRunPenalty: 2
+  crouchWalkSpeed: 0
+  crouchRunSpeed: 0
   jumpPower: 20
-  runJumpPenalty: 1.25
+  runJumpPower: 20
+  runJumpMomentumBoost: 10
   playerCollider: {fileID: 1008658918702676219}
   playerCrouchCollider: {fileID: 1970488452797023313}
 --- !u!70 &1008658918702676219
