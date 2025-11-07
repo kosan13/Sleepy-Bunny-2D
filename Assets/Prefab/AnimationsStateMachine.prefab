@@ -125,8 +125,8 @@ MonoBehaviour:
     triggerParameter: IsStandingRight
     animationClip: {fileID: 7400000, guid: 2a6a6299cdeb7694c9c8d18bb5befc64, type: 2}
   - animationsState: 0
-    triggerParameter: 
+    triggerParameter: IsDyingLeft
     animationClip: {fileID: 0}
   - animationsState: 0
-    triggerParameter: 
+    triggerParameter: IsDyingRight
     animationClip: {fileID: 0}
