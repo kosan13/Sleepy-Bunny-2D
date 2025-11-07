@@ -126,7 +126,7 @@ MonoBehaviour:
     animationClip: {fileID: 7400000, guid: 2a6a6299cdeb7694c9c8d18bb5befc64, type: 2}
   - animationsState: 0
     triggerParameter: IsDyingLeft
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: 2297ca77368422b49ba501609d20d759, type: 2}
   - animationsState: 0
     triggerParameter: IsDyingRight
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: 2a6a6299cdeb7694c9c8d18bb5befc64, type: 2}
