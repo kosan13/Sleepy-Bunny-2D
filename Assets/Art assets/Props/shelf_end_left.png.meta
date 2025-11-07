@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2783e04407ee28c42b2fdea78b1ede73
+guid: fbd7e9e6a0d15f442aa42ee1eda711fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4990244870145365857
-    second: night_stand_0
+      213: 3486196171672826025
+    second: shelf_end_left_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: night_stand_0
+      name: shelf_end_left_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 504
-        height: 501
+        width: 65
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 167da3b1549e04540800000000000000
-      internalID: 4990244870145365857
+      spriteID: 9a0b2ed82f4716030800000000000000
+      internalID: 3486196171672826025
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      night_stand_0: 4990244870145365857
+      shelf_end_left_0: 3486196171672826025
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
