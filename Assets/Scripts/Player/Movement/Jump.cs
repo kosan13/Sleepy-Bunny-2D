@@ -61,7 +61,7 @@ namespace Player.Movement
             int[] groundLayerMasks = new []
             {
                 0b00000000000000000000000000001000, // layer 3 in bits
-                0b00000000000000000000000000000110 // layer 6 in bits
+                1<<6 // layer 6 in bits
             };
             Vector2 position = rigidbody2D.position;
             RaycastHit2D returnValue = new();
