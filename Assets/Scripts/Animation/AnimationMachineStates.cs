@@ -11,6 +11,11 @@ namespace Animation
         {
             [SerializeField] private AnimationsStates animationsState;
             [SerializeField] private string triggerParameter = string.Empty;
+            [SerializeField] private AnimationClip animationClip;
+
+            public AnimationsStates AnimationsStates => animationsState;
+            public string TriggerParameter => triggerParameter;
+            public AnimationClip AnimationClip => animationClip;
 
             private int _parameterHash;
                 
@@ -19,12 +24,12 @@ namespace Animation
             {
                 if (animationsState != stateMatch)
                 {
-                    try { _stateMachine.animator.ResetTrigger(triggerParameter); }
+                    try { StateMachine.animator.ResetTrigger(triggerParameter); }
                     catch (Exception exception) { Debug.Log(exception.Message); }
                 }
                 else
                 {
-                    try { _stateMachine.animator.SetTrigger(triggerParameter); }
+                    try { StateMachine.animator.SetTrigger(triggerParameter); }
                     catch (Exception exception) { Debug.Log(exception.Message); }
                 }
             }

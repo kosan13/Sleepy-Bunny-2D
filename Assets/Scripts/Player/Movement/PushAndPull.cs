@@ -19,9 +19,9 @@ namespace Player.Movement
             if (!PushOrPull) return;
             switch (Move.GetMoveDirection)
             {
-                case > 0: OnPushOrPull(AnimationsStates.IsPushing); break;
-                case < 0: OnPushOrPull(AnimationsStates.IsPulling); break;
-                default: OnPushOrPull(AnimationsStates.IsPulling); break;
+                case > 0: OnPushOrPull(AnimationsStates.IsPushingRight); break;
+                case < 0: OnPushOrPull(AnimationsStates.IsPullingLeft); break;
+                default: OnPushOrPull(AnimationsStates.IsPullingRight); break;
             }
         }
         public static void OnPushAndPullCollisionEnter2D(Collision2D other) {}

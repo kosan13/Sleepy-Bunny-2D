@@ -49,12 +49,12 @@ namespace Player.Movement
             if (GetIsCrouching)
             {
                 GetMoveState = MoveState.CrouchWalk;
-                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchWalk);
+                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchingWalkRight);
                 return;
             }
             
             GetMoveState = MoveState.Walk;
-            AnimationsStateMachine.SetState(AnimationsStates.IsWalking);
+            AnimationsStateMachine.SetState(AnimationsStates.IsWalkingRight);
         }
         public static void OnRun(float moveDirection)
         {
@@ -64,12 +64,12 @@ namespace Player.Movement
             if (GetIsCrouching)
             {
                 GetMoveState = moveDirection == 0 ? MoveState.CrouchWalk : MoveState.CrouchRun;
-                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchRun);
+                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchingRunRight);
                 return;
             }
             
             GetMoveState = moveDirection == 0 ? MoveState.Walk : MoveState.Run;
-            AnimationsStateMachine.SetState(AnimationsStates.IsRunning);
+            AnimationsStateMachine.SetState(AnimationsStates.IsRunningRight);
         }
         public static void OnCrouch(bool relistButton = false)
         {

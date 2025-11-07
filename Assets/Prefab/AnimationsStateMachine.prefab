@@ -47,22 +47,86 @@ MonoBehaviour:
   animator: {fileID: 0}
   machineStates:
   - animationsState: 0
-    triggerParameter: IsIdling
+    triggerParameter: IsIdlingLeft
+    animationClip: {fileID: 7400000, guid: 1101e035f66bf8344a1496d90eb617be, type: 2}
+  - animationsState: 14
+    triggerParameter: IsIdlingRight
+    animationClip: {fileID: 7400000, guid: 8600f69c8d5a5c240bc4f692abdabfda, type: 2}
   - animationsState: 1
-    triggerParameter: IsPushing
+    triggerParameter: IsCrouchingIdlingLeft
+    animationClip: {fileID: 7400000, guid: bcdfb31e26293f84bb1016ff0733a644, type: 2}
+  - animationsState: 15
+    triggerParameter: IsCrouchingIdlingRight
+    animationClip: {fileID: 7400000, guid: f8f148413a479f14aa213f88a00d752b, type: 2}
   - animationsState: 2
-    triggerParameter: IsPulling
+    triggerParameter: IsPushingLeft
+    animationClip: {fileID: 7400000, guid: b63c544d43f21e9439d2940309c13738, type: 2}
+  - animationsState: 16
+    triggerParameter: IsPushingRight
+    animationClip: {fileID: 7400000, guid: f21669dc7ef384d4ca25deee08116861, type: 2}
   - animationsState: 3
-    triggerParameter: IsWalking
+    triggerParameter: IsPullingLeft
+    animationClip: {fileID: 7400000, guid: 760d6726d80891949b214a6764adf843, type: 2}
+  - animationsState: 17
+    triggerParameter: IsPullingRight
+    animationClip: {fileID: 7400000, guid: f05f3353eec98a64c8074446535a53a9, type: 2}
   - animationsState: 4
-    triggerParameter: IsRunning
+    triggerParameter: IsWalkingLeft
+    animationClip: {fileID: 7400000, guid: 36f427adae0d766429fae5df3912b42c, type: 2}
+  - animationsState: 18
+    triggerParameter: IsWalkingRight
+    animationClip: {fileID: 7400000, guid: f786f152ee233724285de3497f883a32, type: 2}
   - animationsState: 5
-    triggerParameter: IsCrouchWalk
+    triggerParameter: IsRunningLeft
+    animationClip: {fileID: 7400000, guid: 36f427adae0d766429fae5df3912b42c, type: 2}
+  - animationsState: 19
+    triggerParameter: IsRunningRight
+    animationClip: {fileID: 7400000, guid: f786f152ee233724285de3497f883a32, type: 2}
   - animationsState: 6
-    triggerParameter: IsCrouchRun
+    triggerParameter: IsCrouchingWalkLeft
+    animationClip: {fileID: 7400000, guid: b005ff37fb258b749a5fa90db0af56b0, type: 2}
+  - animationsState: 20
+    triggerParameter: IsCrouchingWalkRight
+    animationClip: {fileID: 7400000, guid: 818cea6bb79b60a4fb5def9808f8487e, type: 2}
   - animationsState: 7
-    triggerParameter: IsJumping
+    triggerParameter: IsCrouchingRunLeft
+    animationClip: {fileID: 7400000, guid: b005ff37fb258b749a5fa90db0af56b0, type: 2}
+  - animationsState: 21
+    triggerParameter: IsCrouchingRunRight
+    animationClip: {fileID: 7400000, guid: 818cea6bb79b60a4fb5def9808f8487e, type: 2}
   - animationsState: 8
-    triggerParameter: IsFalling
+    triggerParameter: IsJumpingLeft
+    animationClip: {fileID: 7400000, guid: b9e12ac4d0e8da54e993cbc090d5d2af, type: 2}
+  - animationsState: 22
+    triggerParameter: IsJumpingRight
+    animationClip: {fileID: 7400000, guid: df10a7fb182d6854d9bce3d626e51db8, type: 2}
   - animationsState: 9
-    triggerParameter: IsLanding
+    triggerParameter: IsFallingLeft
+    animationClip: {fileID: 7400000, guid: 8e9b2e0d212d9e74aa4309e1b5e8b877, type: 2}
+  - animationsState: 23
+    triggerParameter: IsFallingRight
+    animationClip: {fileID: 7400000, guid: 3306029527125764b93984f3c7e6582c, type: 2}
+  - animationsState: 10
+    triggerParameter: IsLandingLeft
+    animationClip: {fileID: 7400000, guid: d8555fd9b00a15f4cb118468b615f67e, type: 2}
+  - animationsState: 23
+    triggerParameter: IsLandingRight
+    animationClip: {fileID: 7400000, guid: f83f2dce5320b224097b20a56ba1ba7a, type: 2}
+  - animationsState: 11
+    triggerParameter: IsCrouchingLeft
+    animationClip: {fileID: 7400000, guid: be0b30f1ee2331745bc22ab1a50974e3, type: 2}
+  - animationsState: 0
+    triggerParameter: 
+    animationClip: {fileID: 0}
+  - animationsState: 0
+    triggerParameter: 
+    animationClip: {fileID: 0}
+  - animationsState: 26
+    triggerParameter: IsStandingRight
+    animationClip: {fileID: 7400000, guid: 2a6a6299cdeb7694c9c8d18bb5befc64, type: 2}
+  - animationsState: 0
+    triggerParameter: 
+    animationClip: {fileID: 0}
+  - animationsState: 0
+    triggerParameter: 
+    animationClip: {fileID: 0}
