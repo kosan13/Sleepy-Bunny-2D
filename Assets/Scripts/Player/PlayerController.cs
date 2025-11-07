@@ -1,7 +1,12 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
+using Animation;
 using Events;
 using UnityEngine;
 using Input;
+using Time;
+using UI;
+using static DeathTrigger.FallingDeathTrigger;
 using static Player.Movement.Move;
 using static Player.Movement.Jump;
 using static Player.Movement.PushAndPull;
@@ -12,6 +17,10 @@ namespace Player
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour, IDeathEvent
     {
+        [Header("DeathTrigers")]
+        [Tooltip("The number you check the linearVelocity.y on FallingDeathTrigger to se if the fall is safe")]
+        [SerializeField] private float safeFallVelocity;
+        
         [Header("Move")]
         [SerializeField] private float walkSpeed;
         [SerializeField] private float runSpeed;
@@ -46,6 +55,8 @@ namespace Player
             
             GetRigidbody2D = GetComponent<Rigidbody2D>();
 
+            OnFallingDeathTriggerAwake(GetRigidbody2D, safeFallVelocity);
+
             OnMovementAwake(GetRigidbody2D, playerCollider, playerCrouchCollider, walkSpeed, runSpeed, crouchWalkSpeed, crouchRunSpeed);
             OnJumpAwake(GetRigidbody2D, jumpPower, runJumpPower, runJumpMomentumBoost);
             OnPushAndPullAwake(GetRigidbody2D);
@@ -67,6 +78,8 @@ namespace Player
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Update()
         {
+            OnFallingDeathTriggerUpdate();
+            
             OnMovementUpdate();
             OnJumpUpdate();
             OnPushAndPullUpdate();
@@ -74,6 +87,8 @@ namespace Player
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void FixedUpdate()
         {
+            OnFallingDeathTriggerFixedUpdate();
+                
             OnMovementFixedUpdate();
             OnJumpFixedUpdate();
             OnPushAndPullFixedUpdate();
@@ -134,7 +149,15 @@ namespace Player
         
         public void TriggerDeathEvent()
         {
-            throw new System.NotImplementedException();
+            if (!AnimationsStateMachine.StateMachine.AnimationMachineStatesMapping.TryGetValue(AnimationsStates.IsDyingRight, out AnimationsStateMachine.AnimationMachineStates animationMachineStates))
+                Debug.LogError("IsDying is do not exist in AnimationMachineStatesMapping");
+            if (animationMachineStates is null) Debug.LogError("IsDying value is not set");
+            else
+            {
+                IEnumerator enumerator = Delays.Delay(animationMachineStates.AnimationClip.length);
+            }
+
+            ResetLevel.ResetCurrentLevel();
         }
     }
 }
