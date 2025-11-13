@@ -11,24 +11,31 @@ public class NotStuckFan : MonoBehaviour
         Left,
         Right
     }
-    private const int PlayerLayer = 7;
+   // private const int PlayerLayer = 7;
 
     [SerializeField] private Directions fanDirection;
     [SerializeField] private float fanPower;
     [SerializeField] private float fanRange;
     [SerializeField] private bool onOff = true;
-    public bool OnOff { get; private set; }
+    //public bool OnOff { get; private set; }
+
+    public bool OnOff = true;
 
     private Rigidbody2D PlayerRigidbody;
 
     private void Start()
     {
         OnOff = onOff;
+        GameObject player = GameObject.Find("player");
+        PlayerRigidbody = player.GetComponent<Rigidbody2D>();
+        Debug.Log(player);
     }
-
+    //brakes the code
+    /*
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.layer != PlayerLayer) return;
         PlayerRigidbody = other.gameObject.GetComponent<Rigidbody2D>();
     }
@@ -39,12 +46,12 @@ public class NotStuckFan : MonoBehaviour
         if (other.gameObject.layer != PlayerLayer) return;
         PlayerRigidbody = null;
     }
-
+    */
     private void FixedUpdate()
     {
 
         if (!OnOff) return;
-        if (PlayerRigidbody is null) return;
+       // if (PlayerRigidbody is null) return;
 
         switch (fanDirection)
         {
