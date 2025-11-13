@@ -4,8 +4,8 @@ using Animation;
 using Events;
 using UnityEngine;
 using Input;
-using Time;
-using UI;
+using TimeFunctions;
+using static LevelFunctionsLibrary.LevelFunctions;
 using static DeathTrigger.FallingDeathTrigger;
 using static Player.Movement.Move;
 using static Player.Movement.Jump;
@@ -17,7 +17,7 @@ namespace Player
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour, IDeathEvent
     {
-        [Header("DeathTrigers")]
+        [Header("DeathTriggers")]
         [Tooltip("The number you check the linearVelocity.y on FallingDeathTrigger to se if the fall is safe")]
         [SerializeField] private float safeFallVelocity;
         
@@ -48,6 +48,19 @@ namespace Player
         public static PlayerController GetPlayerController { get; private set; }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void OnEnable()
+        {
+            PlayerMap.Enable();
+            GetPlayerController = this;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void OnDisable()
+        {
+            PlayerMap.Disable();
+            GetPlayerController = GetPlayerController == this ? null : GetPlayerController;
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Awake()
         {
             _inputControls = new PlayerInputController();
@@ -60,19 +73,6 @@ namespace Player
             OnMovementAwake(GetRigidbody2D, playerCollider, playerCrouchCollider, walkSpeed, runSpeed, crouchWalkSpeed, crouchRunSpeed);
             OnJumpAwake(GetRigidbody2D, jumpPower, runJumpPower, runJumpMomentumBoost);
             OnPushAndPullAwake(GetRigidbody2D);
-        }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void OnEnable()
-        {
-            PlayerMap.Enable();
-            GetPlayerController = this;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void OnDisable()
-        {
-            PlayerMap.Disable();
-            GetPlayerController = GetPlayerController == this ? null : GetPlayerController;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -157,7 +157,7 @@ namespace Player
                 IEnumerator enumerator = Delays.Delay(animationMachineStates.AnimationClip.length);
             }
 
-            ResetLevel.ResetCurrentLevel();
+            ResetCurrentLevel();
         }
     }
 }

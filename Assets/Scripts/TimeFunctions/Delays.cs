@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Time
+namespace TimeFunctions
 {
     public static class Delays
     {

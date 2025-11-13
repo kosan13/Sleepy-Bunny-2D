@@ -60,7 +60,7 @@ namespace Player.Movement
             const float groundedDistance = 2f;
             int[] groundLayerMasks = new []
             {
-                0b00000000000000000000000000001000, // layer 3 in bits
+                1<<3, // layer 3 in bits
                 1<<6 // layer 6 in bits
             };
             Vector2 position = rigidbody2D.position;
