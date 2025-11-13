@@ -18,7 +18,7 @@ namespace Global
 
         #region Ground
 
-        public static int GroundLayer { get; } = 7;
+        public static int GroundLayer { get; } = 3;
         public static int GroundLayerMask { get; } = 1<<GroundLayer; // GroundLayer in bits
 
         #endregion
