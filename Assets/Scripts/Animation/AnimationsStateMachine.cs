@@ -4,6 +4,7 @@ using Player;
 using Player.Movement;
 using UnityEngine;
 
+using static Global.GlobalFunctionsLibrary;
 namespace Animation
 {
     public partial class AnimationsStateMachine : MonoBehaviour
@@ -41,7 +42,7 @@ namespace Animation
 
         public static bool TrySetStateIsIdling()
         {
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
             SetState(AnimationsStates.IsIdlingRight);
             return true;
@@ -49,7 +50,7 @@ namespace Animation
         public static bool TrySetStateIsPushing()
         {
             if (!PushAndPull.PushOrPull) return false;
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             if (true) return false;
             SetState(AnimationsStates.IsPushingRight);
             return true;
@@ -57,7 +58,7 @@ namespace Animation
         public static bool TrySetStateIsPulling()
         {
             if (!PushAndPull.PushOrPull) return false;
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             if (true) return false;
             SetState(AnimationsStates.IsPullingRight);
             return true;
@@ -65,14 +66,14 @@ namespace Animation
         public static bool TrySetStateIsWalking()
         {
             Rigidbody2D rigidbody2D = PlayerController.GetPlayerController.GetRigidbody2D;
-            if (!Jump.IsGrounded(rigidbody2D)) return false;
+            if (!IsGrounded(rigidbody2D)) return false;
             if (rigidbody2D.linearVelocityX == 0) return false;
             SetState(AnimationsStates.IsWalkingRight);
             return true;
         }
         public static bool TrySetStateIsRunning()
         {
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             if (true) return false;
             SetState(AnimationsStates.IsRunningRight);
             return true;
@@ -80,34 +81,34 @@ namespace Animation
         public static bool TrySetStateCrouchWalk()
         {
             if (!Move.GetIsCrouching) return false;
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             SetState(AnimationsStates.IsCrouchingWalkRight);
             return true;
         }
         public static bool TrySetStateCrouchRun()
         {
             if (!Move.GetIsCrouching) return false;
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             if (true) return false;
             SetState(AnimationsStates.IsCrouchingRunRight);
             return true;
         }
         public static bool TrySetStateIsJumping()
         {
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             if (!Jump.GetIsJumping) return false;
             SetState(AnimationsStates.IsJumpingRight);
             return true;
         }
         public static bool TrySetStateIsFalling()
         {
-            if (Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             SetState(AnimationsStates.IsFallingRight);
             return true;
         }
         public static bool TrySetStateIsLanding()
         {
-            if (!Jump.IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             SetState(AnimationsStates.IsLandingRight);
             return true;
         }

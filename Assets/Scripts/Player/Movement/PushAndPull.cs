@@ -1,11 +1,11 @@
 using Animation;
 using UnityEngine;
+using static Global.GlobalVariablesLibrary;
 
 namespace Player.Movement
 {
     public static class PushAndPull
     {
-        private const int PushAndPullObjectLayer = 6;
         
         private static Rigidbody2D _rigidbody2D;
         private static GameObject _pushAndPullObject;
@@ -28,7 +28,7 @@ namespace Player.Movement
         public static void OnPushAndPullCollisionExit2D(Collision2D other) {}
         public static void OnPushAndPullTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.layer != PushAndPullObjectLayer) return;
+            if (other.gameObject.layer != PushAndPullLayer) return;
             _pushAndPullObject = other.gameObject;
         }
         public static void OnPushAndPullOnTriggerExit2D(Collider2D other)

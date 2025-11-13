@@ -2,6 +2,8 @@ using System.Runtime.CompilerServices;
 using Animation;
 using UnityEngine;
 
+using static Global.GlobalFunctionsLibrary;
+
 namespace Player.Movement
 {
     public enum MoveState
@@ -58,7 +60,7 @@ namespace Player.Movement
         }
         public static void OnRun(float moveDirection)
         {
-            if (!Jump.IsGrounded(_rigidbody2D)) OnWalk(moveDirection);
+            if (IsGrounded(_rigidbody2D)) OnWalk(moveDirection);
             GetMoveDirection = moveDirection;
             
             if (GetIsCrouching)
