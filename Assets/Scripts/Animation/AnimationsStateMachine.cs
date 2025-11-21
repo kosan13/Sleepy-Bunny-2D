@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Player;
@@ -12,8 +13,7 @@ namespace Animation
         [SerializeField] private Animator animator;
         [SerializeField] private AnimationMachineStates[] machineStates;
 
-        private Dictionary<AnimationsStates, AnimationMachineStates> _animationMachineStatesMapping;
-        public Dictionary<AnimationsStates, AnimationMachineStates> AnimationMachineStatesMapping => _animationMachineStatesMapping;
+        public Dictionary<AnimationsStates, AnimationMachineStates> AnimationMachineStatesMapping { get; } = new ();
 
         public static AnimationsStateMachine StateMachine { get; private set; }
         public Animator Animator => animator; 
@@ -31,85 +31,116 @@ namespace Animation
             foreach (AnimationMachineStates state in StateMachine.machineStates)
             {
                 state.GenerateHash();
-                _animationMachineStatesMapping.Add(state.AnimationsStates, state);
+                AnimationMachineStatesMapping.Add(state.AnimationsStates, state);
             }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetState(AnimationsStates newState) { foreach (AnimationMachineStates state in StateMachine.machineStates) state.Poll(newState); }
         
+        
+        
+        public static AnimationsStates SetPlayerAnimationAndAnimationsDirection(Rigidbody2D rigidbody2D, Transform mainAnimationBone, AnimationsStates animationsStateLeft, AnimationsStates animationsStateRight)
+        {
+            PlayerAnimationsDirection playerAnimationsDirection = rigidbody2D.linearVelocityX switch
+            {
+                > 0 => PlayerAnimationsDirection.Right,
+                < 0 => PlayerAnimationsDirection.Left,
+                _ => PlayerAnimationsDirection.Right
+            };
+            switch(playerAnimationsDirection)
+            {
+                case PlayerAnimationsDirection.Left:
+                {
+                    mainAnimationBone.transform.rotation.Set(0, 180, 0, 0);
+                    SetState(animationsStateLeft);
+                    return animationsStateLeft;
+                }
+                case PlayerAnimationsDirection.Right:
+                {
+                    mainAnimationBone.transform.rotation.Set(0, 0, 0, 0); 
+                    SetState(animationsStateRight);
+                    return animationsStateRight;
+                }
+                default: throw new ArgumentOutOfRangeException();
+            }
+        }
+        
 
 
-        public static bool TrySetStateIsIdling()
+        public static bool TrySetStateIsIdling(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
         {
             if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
             if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            SetState(AnimationsStates.IsIdlingRight);
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsIdlingLeft, AnimationsStates.IsIdlingRight);
             return true;
         }
-        public static bool TrySetStateIsPushing()
-        {
-            if (!PushAndPull.PushOrPull) return false;
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (true) return false;
-            SetState(AnimationsStates.IsPushingRight);
-            return true;
-        }
-        public static bool TrySetStateIsPulling()
-        {
-            if (!PushAndPull.PushOrPull) return false;
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (true) return false;
-            SetState(AnimationsStates.IsPullingRight);
-            return true;
-        }
-        public static bool TrySetStateIsWalking()
-        {
-            Rigidbody2D rigidbody2D = PlayerController.GetPlayerController.GetRigidbody2D;
-            if (!IsGrounded(rigidbody2D)) return false;
-            if (rigidbody2D.linearVelocityX == 0) return false;
-            SetState(AnimationsStates.IsWalkingRight);
-            return true;
-        }
-        public static bool TrySetStateIsRunning()
+        public static bool TrySetStateIsPushing(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
         {
             if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (true) return false;
-            SetState(AnimationsStates.IsRunningRight);
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsPushingLeft, AnimationsStates.IsPushingRight);
             return true;
         }
-        public static bool TrySetStateCrouchWalk()
-        {
-            if (!Move.GetIsCrouching) return false;
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            SetState(AnimationsStates.IsCrouchingWalkRight);
-            return true;
-        }
-        public static bool TrySetStateCrouchRun()
-        {
-            if (!Move.GetIsCrouching) return false;
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (true) return false;
-            SetState(AnimationsStates.IsCrouchingRunRight);
-            return true;
-        }
-        public static bool TrySetStateIsJumping()
+        public static bool TrySetStateIsPulling(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
         {
             if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (!Jump.GetIsJumping) return false;
-            SetState(AnimationsStates.IsJumpingRight);
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsPullingLeft, AnimationsStates.IsPullingRight);
             return true;
         }
-        public static bool TrySetStateIsFalling()
-        {
-            if (IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            SetState(AnimationsStates.IsFallingRight);
-            return true;
-        }
-        public static bool TrySetStateIsLanding()
+        public static bool TrySetStateIsWalking(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
         {
             if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            SetState(AnimationsStates.IsLandingRight);
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsWalkingLeft, AnimationsStates.IsWalkingRight);
+            return true;
+        }
+        public static bool TrySetStateIsRunning(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
+        {
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsRunningLeft, AnimationsStates.IsRunningRight);
+            return true;
+        }
+        public static bool TrySetStateCrouchWalk(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
+        {
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsCrouchingWalkLeft, AnimationsStates.IsCrouchingWalkRight);
+            return true;
+        }
+        public static bool TrySetStateCrouchRun(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
+        {
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsCrouchingRunLeft, AnimationsStates.IsCrouchingRunRight);
+            return true;
+        }
+        public static bool TrySetStateIsJumping(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
+        {
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsJumpingLeft, AnimationsStates.IsJumpingRight);
+            return true;
+        }
+        public static bool TrySetStateIsFalling(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
+        {
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsFallingLeft, AnimationsStates.IsFallingRight);
+            return true;
+        }
+        public static bool TrySetStateIsLanding(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
+        {
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsLandingLeft, AnimationsStates.IsLandingRight);
+            return true;
+        }
+        public static bool TrySetStateIsDying(Rigidbody2D rigidbody2D, Transform mainAnimationBone)
+        {
+            SetPlayerAnimationAndAnimationsDirection(rigidbody2D, mainAnimationBone, AnimationsStates.IsDyingLeft, AnimationsStates.IsDyingRight);
             return true;
         }
     }

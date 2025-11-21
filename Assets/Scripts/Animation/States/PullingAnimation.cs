@@ -1,5 +1,6 @@
 using UnityEngine;
 using static Animation.AnimationsStateMachine;
+using static Player.PlayerController;
 
 namespace Animation.States
 {
@@ -8,13 +9,13 @@ namespace Animation.States
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (TrySetStateIsPushing()) return;
-            if (TrySetStateIsFalling()) return;
-            if (TrySetStateIsIdling()) return;
-            if (TrySetStateCrouchRun()) return;
-            if (TrySetStateCrouchWalk()) return;
-            if (TrySetStateIsRunning()) return;
-            if(TrySetStateIsWalking()) return;
+            if (TrySetStateIsPushing(GetPlayerController.GetRigidbody2D, GetPlayerController.MainAnimationBone)) return;
+            if (TrySetStateIsFalling(GetPlayerController.GetRigidbody2D, GetPlayerController.MainAnimationBone)) return;
+            if (TrySetStateIsIdling(GetPlayerController.GetRigidbody2D, GetPlayerController.MainAnimationBone)) return;
+            if (TrySetStateCrouchRun(GetPlayerController.GetRigidbody2D, GetPlayerController.MainAnimationBone)) return;
+            if (TrySetStateCrouchWalk(GetPlayerController.GetRigidbody2D, GetPlayerController.MainAnimationBone)) return;
+            if (TrySetStateIsRunning(GetPlayerController.GetRigidbody2D, GetPlayerController.MainAnimationBone)) return;
+            if(TrySetStateIsWalking(GetPlayerController.GetRigidbody2D, GetPlayerController.MainAnimationBone)) return;
             return;
         }
     }

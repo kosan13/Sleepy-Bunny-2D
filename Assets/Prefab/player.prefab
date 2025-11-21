@@ -351,6 +351,7 @@ MonoBehaviour:
   runJumpMomentumBoost: 60
   playerCollider: {fileID: 1008658918702676219}
   playerCrouchCollider: {fileID: 1970488452797023313}
+  mainAnimationBone: {fileID: 84935913706718052}
 --- !u!70 &1008658918702676219
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

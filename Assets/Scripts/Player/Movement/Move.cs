@@ -3,6 +3,7 @@ using Animation;
 using UnityEngine;
 
 using static Global.GlobalFunctionsLibrary;
+using static Player.PlayerController;
 
 namespace Player.Movement
 {
@@ -51,12 +52,12 @@ namespace Player.Movement
             if (GetIsCrouching)
             {
                 GetMoveState = MoveState.CrouchWalk;
-                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchingWalkRight);
+                AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, AnimationsStates.IsCrouchingWalkLeft, AnimationsStates.IsCrouchingWalkRight);
                 return;
             }
             
             GetMoveState = MoveState.Walk;
-            AnimationsStateMachine.SetState(AnimationsStates.IsWalkingRight);
+            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, AnimationsStates.IsWalkingLeft, AnimationsStates.IsWalkingRight);
         }
         public static void OnRun(float moveDirection)
         {
@@ -66,12 +67,12 @@ namespace Player.Movement
             if (GetIsCrouching)
             {
                 GetMoveState = moveDirection == 0 ? MoveState.CrouchWalk : MoveState.CrouchRun;
-                AnimationsStateMachine.SetState(AnimationsStates.IsCrouchingRunRight);
+                AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, AnimationsStates.IsCrouchingRunLeft, AnimationsStates.IsCrouchingRunRight);
                 return;
             }
             
             GetMoveState = moveDirection == 0 ? MoveState.Walk : MoveState.Run;
-            AnimationsStateMachine.SetState(AnimationsStates.IsRunningRight);
+            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, AnimationsStates.IsRunningLeft, AnimationsStates.IsRunningRight);
         }
         public static void OnCrouch(bool relistButton = false)
         {
@@ -91,6 +92,7 @@ namespace Player.Movement
 
         private static void ApplyForces()
         {
+            if (Jump.GetIsJumping) return;
             Debug.Log("MoveState is Value: " + GetMoveState);
             // Move Force
             _rigidbody2D.linearVelocityX = GetMoveState switch

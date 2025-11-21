@@ -109,24 +109,24 @@ MonoBehaviour:
   - animationsState: 10
     triggerParameter: IsLandingLeft
     animationClip: {fileID: 7400000, guid: d8555fd9b00a15f4cb118468b615f67e, type: 2}
-  - animationsState: 23
+  - animationsState: 24
     triggerParameter: IsLandingRight
     animationClip: {fileID: 7400000, guid: f83f2dce5320b224097b20a56ba1ba7a, type: 2}
   - animationsState: 11
     triggerParameter: IsCrouchingLeft
     animationClip: {fileID: 7400000, guid: be0b30f1ee2331745bc22ab1a50974e3, type: 2}
-  - animationsState: 0
-    triggerParameter: 
-    animationClip: {fileID: 0}
-  - animationsState: 0
-    triggerParameter: 
-    animationClip: {fileID: 0}
+  - animationsState: 25
+    triggerParameter: IsCrouchingRight
+    animationClip: {fileID: 7400000, guid: d3e2b236216d95747947f21f94d27451, type: 2}
+  - animationsState: 12
+    triggerParameter: IsStandingLeft
+    animationClip: {fileID: 7400000, guid: 2297ca77368422b49ba501609d20d759, type: 2}
   - animationsState: 26
     triggerParameter: IsStandingRight
     animationClip: {fileID: 7400000, guid: 2a6a6299cdeb7694c9c8d18bb5befc64, type: 2}
-  - animationsState: 0
+  - animationsState: 13
     triggerParameter: IsDyingLeft
     animationClip: {fileID: 7400000, guid: 8f4c0164b669f564696a51fd67ba7d6c, type: 2}
-  - animationsState: 0
+  - animationsState: 27
     triggerParameter: IsDyingRight
     animationClip: {fileID: 7400000, guid: 25e3eb261fc46ec49a390159f81b945a, type: 2}
