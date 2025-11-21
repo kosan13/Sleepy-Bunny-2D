@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: c43ddf7765891404f96aabcd0b134c3b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1610793941054530818
+    second: Glass_shards_0
+  - first:
+      213: 8195155570948263948
+    second: Glass_shards_1
+  - first:
+      213: -7933925956770857373
+    second: Glass_shards_2
+  - first:
+      213: -6525574450729166176
+    second: Glass_shards_3
+  - first:
+      213: 4137349760410711259
+    second: Glass_shards_4
+  - first:
+      213: -3637338538112338662
+    second: Glass_shards_5
+  - first:
+      213: 4168880502293925514
+    second: Glass_shards_6
+  - first:
+      213: -7667690776012111765
+    second: Glass_shards_7
+  - first:
+      213: 2647023241565053422
+    second: Glass_shards_8
+  - first:
+      213: 6884702781684416509
+    second: Glass_shards_9
+  - first:
+      213: 7614368253996280235
+    second: Glass_shards_10
+  - first:
+      213: -8598272879545873114
+    second: Glass_shards_11
+  - first:
+      213: 1538687241558331464
+    second: Glass_shards_12
+  - first:
+      213: -9089900348290907417
+    second: Glass_shards_13
+  - first:
+      213: 6815779562100296955
+    second: Glass_shards_14
+  - first:
+      213: -4895010382563603790
+    second: Glass_shards_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Glass_shards_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 73
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20528e61e80ba5610800000000000000
+      internalID: 1610793941054530818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 111
+        width: 112
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c005f6d629a0bb170800000000000000
+      internalID: 8195155570948263948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_2
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 95
+        width: 51
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36efb68c06805e190800000000000000
+      internalID: -7933925956770857373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_3
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 114
+        width: 82
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aa5cec6c908075a0800000000000000
+      internalID: -6525574450729166176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 99
+        width: 49
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd4f3dcbfa1da6930800000000000000
+      internalID: 4137349760410711259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_5
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 72
+        width: 129
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a15b9fbfed3958dc0800000000000000
+      internalID: -3637338538112338662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_6
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 84
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e084aaab6dad930800000000000000
+      internalID: 4168880502293925514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_7
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 23
+        width: 137
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6042484dd3e69590800000000000000
+      internalID: -7667690776012111765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 29
+        width: 40
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee120b91d9d1cb420800000000000000
+      internalID: 2647023241565053422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_9
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 50
+        width: 44
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff717604b06b8f50800000000000000
+      internalID: 6884702781684416509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_10
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 55
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba9a578959baba960800000000000000
+      internalID: 7614368253996280235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_11
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 28
+        width: 58
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62d0bc42f5ccca880800000000000000
+      internalID: -8598272879545873114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_12
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 71
+        width: 41
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8409285d4e38a5510800000000000000
+      internalID: 1538687241558331464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_13
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 19
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e2cb682bcf2ad180800000000000000
+      internalID: -9089900348290907417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_14
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 40
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfc0b527663869e50800000000000000
+      internalID: 6815779562100296955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glass_shards_15
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 91
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba827fedfd611cb0800000000000000
+      internalID: -4895010382563603790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Glass_shards_0: 1610793941054530818
+      Glass_shards_1: 8195155570948263948
+      Glass_shards_10: 7614368253996280235
+      Glass_shards_11: -8598272879545873114
+      Glass_shards_12: 1538687241558331464
+      Glass_shards_13: -9089900348290907417
+      Glass_shards_14: 6815779562100296955
+      Glass_shards_15: -4895010382563603790
+      Glass_shards_2: -7933925956770857373
+      Glass_shards_3: -6525574450729166176
+      Glass_shards_4: 4137349760410711259
+      Glass_shards_5: -3637338538112338662
+      Glass_shards_6: 4168880502293925514
+      Glass_shards_7: -7667690776012111765
+      Glass_shards_8: 2647023241565053422
+      Glass_shards_9: 6884702781684416509
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

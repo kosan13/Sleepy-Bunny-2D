@@ -4,8 +4,9 @@ using Animation;
 using Events;
 using UnityEngine;
 using Input;
-using Time;
-using UI;
+using LevelFunctionsLibrary;
+using TimeFunctions;
+using static LevelFunctionsLibrary.LevelFunctions;
 using static DeathTrigger.FallingDeathTrigger;
 using static Player.Movement.Move;
 using static Player.Movement.Jump;
@@ -14,10 +15,16 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace Player
 {
+    public enum PlayerAnimationsDirection
+    {
+        Left,
+        Right
+    }
+    
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : MonoBehaviour, IDeathEvent
     {
-        [Header("DeathTrigers")]
+        [Header("DeathTriggers")]
         [Tooltip("The number you check the linearVelocity.y on FallingDeathTrigger to se if the fall is safe")]
         [SerializeField] private float safeFallVelocity;
         
@@ -41,12 +48,32 @@ namespace Player
         [Tooltip("Players collider when crouching")]
         [SerializeField] private CapsuleCollider2D playerCrouchCollider;
         
-        private PlayerInputController _inputControls;
-        private PlayerInputController.PlayerActions PlayerMap => _inputControls.Player;
-
+        [Header("Others")] 
+        [SerializeField] private Transform mainAnimationBone;
+        
         public Rigidbody2D GetRigidbody2D { get; private set; }
         public static PlayerController GetPlayerController { get; private set; }
 
+        public Transform MainAnimationBone => mainAnimationBone;
+        
+        
+        private PlayerInputController _inputControls;
+        private PlayerInputController.PlayerActions PlayerMap => _inputControls.Player;
+        
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void OnEnable()
+        {
+            PlayerMap.Enable();
+            GetPlayerController = this;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void OnDisable()
+        {
+            PlayerMap.Disable();
+            GetPlayerController = GetPlayerController == this ? null : GetPlayerController;
+        }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Awake()
         {
@@ -60,19 +87,6 @@ namespace Player
             OnMovementAwake(GetRigidbody2D, playerCollider, playerCrouchCollider, walkSpeed, runSpeed, crouchWalkSpeed, crouchRunSpeed);
             OnJumpAwake(GetRigidbody2D, jumpPower, runJumpPower, runJumpMomentumBoost);
             OnPushAndPullAwake(GetRigidbody2D);
-        }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void OnEnable()
-        {
-            PlayerMap.Enable();
-            GetPlayerController = this;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void OnDisable()
-        {
-            PlayerMap.Disable();
-            GetPlayerController = GetPlayerController == this ? null : GetPlayerController;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -149,15 +163,15 @@ namespace Player
         
         public void TriggerDeathEvent()
         {
-            if (!AnimationsStateMachine.StateMachine.AnimationMachineStatesMapping.TryGetValue(AnimationsStates.IsDyingRight, out AnimationsStateMachine.AnimationMachineStates animationMachineStates))
+            AnimationsStates animationsStates = AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(GetRigidbody2D, mainAnimationBone, AnimationsStates.IsDyingLeft, AnimationsStates.IsDyingRight);
+            if (!AnimationsStateMachine.StateMachine.AnimationMachineStatesMapping.TryGetValue(animationsStates, out AnimationsStateMachine.AnimationMachineStates animationMachineStates))
                 Debug.LogError("IsDying is do not exist in AnimationMachineStatesMapping");
+            Debug.Log(Time.time);
             if (animationMachineStates is null) Debug.LogError("IsDying value is not set");
-            else
-            {
-                IEnumerator enumerator = Delays.Delay(animationMachineStates.AnimationClip.length);
-            }
+            else { IEnumerator enumerator = Delays.Delay(animationMachineStates.AnimationClip.length); }
+            Debug.Log(Time.time);
 
-            ResetLevel.ResetCurrentLevel();
+            ResetCurrentLevel();
         }
     }
 }
