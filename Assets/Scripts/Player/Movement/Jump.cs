@@ -3,6 +3,7 @@ using Animation;
 using UnityEngine;
 
 using static Global.GlobalFunctionsLibrary;
+using static Player.PlayerController;
 
 namespace Player.Movement
 {
@@ -54,7 +55,7 @@ namespace Player.Movement
                 return;
             }
             GetIsJumping = true;
-            AnimationsStateMachine.SetState(AnimationsStates.IsJumpingRight);
+            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, AnimationsStates.IsJumpingLeft, AnimationsStates.IsJumpingRight);
         }
     }
 }

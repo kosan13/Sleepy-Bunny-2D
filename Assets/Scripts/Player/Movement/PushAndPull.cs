@@ -1,6 +1,7 @@
 using Animation;
 using UnityEngine;
 using static Global.GlobalVariablesLibrary;
+using static Player.PlayerController;
 
 namespace Player.Movement
 {
@@ -12,17 +13,16 @@ namespace Player.Movement
 
         public static bool PushOrPull { get; private set; }
 
-        public static void OnPushAndPullAwake(Rigidbody2D rigidbody2D) => _rigidbody2D = rigidbody2D;
+        public static void OnPushAndPullAwake(Rigidbody2D rigidbody2D)
+        {
+            _rigidbody2D = rigidbody2D;
+        }
+
         public static void OnPushAndPullUpdate() {}
         public static void OnPushAndPullFixedUpdate()
         {
             if (!PushOrPull) return;
-            switch (Move.GetMoveDirection)
-            {
-                case > 0: OnPushOrPull(AnimationsStates.IsPushingRight); break;
-                case < 0: OnPushOrPull(AnimationsStates.IsPullingLeft); break;
-                default: OnPushOrPull(AnimationsStates.IsPullingRight); break;
-            }
+            OnPushOrPull(AnimationsStates.IsPullingLeft, AnimationsStates.IsPullingRight);
         }
         public static void OnPushAndPullCollisionEnter2D(Collision2D other) {}
         public static void OnPushAndPullCollisionExit2D(Collision2D other) {}
@@ -41,11 +41,11 @@ namespace Player.Movement
         }
 
         public static void OnPushAndPull(bool relistButton = false) => PushOrPull = _pushAndPullObject is not null && relistButton == false;
-        private static void OnPushOrPull(AnimationsStates animationsStates)
+        private static void OnPushOrPull(AnimationsStates animationsStateLeft, AnimationsStates animationsStateRight)
         {
             Rigidbody2D rigidbody2D = _pushAndPullObject.GetComponent<Rigidbody2D>();
             rigidbody2D.linearVelocityX = _rigidbody2D.linearVelocityX;
-            AnimationsStateMachine.SetState(animationsStates);
+            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, animationsStateLeft, animationsStateRight);
         }
     }
 }

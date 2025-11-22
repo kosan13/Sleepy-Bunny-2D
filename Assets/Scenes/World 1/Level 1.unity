@@ -923,6 +923,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3855812121184759532, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
+      propertyPath: Profile
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3855812121184759532, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
+      propertyPath: FocusOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3855812121184759532, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
+      propertyPath: FocusTracking
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4016549667441267875, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.5
@@ -968,12 +980,24 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
+      propertyPath: crouchRunSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
+      propertyPath: crouchWalkSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: safeFallVelocity
       value: 100000000
       objectReference: {fileID: 0}
     - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: runJumpMomentumBoost
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208766014758903118, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
+      propertyPath: Priority.Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7768764931942942045, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: m_Name
