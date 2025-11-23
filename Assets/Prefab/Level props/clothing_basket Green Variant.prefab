@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7406962602766630420, guid: 51be0d733f1699f4c96aea942f726a4c, type: 3}
       propertyPath: m_Name
-      value: clothing_basket Variant
+      value: clothing_basket Green Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8305512231717897068, guid: 51be0d733f1699f4c96aea942f726a4c, type: 3}
       propertyPath: m_LocalScale.x

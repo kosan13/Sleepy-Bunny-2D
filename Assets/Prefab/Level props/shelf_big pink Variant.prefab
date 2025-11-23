@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3007412376390608804, guid: b1adf2abb6da4ac4e9ed0b4d2dc7c0f5, type: 3}
       propertyPath: m_Name
-      value: shelf_big Variant
+      value: shelf_big pink Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6475586361328019172, guid: b1adf2abb6da4ac4e9ed0b4d2dc7c0f5, type: 3}
       propertyPath: m_Color.b
