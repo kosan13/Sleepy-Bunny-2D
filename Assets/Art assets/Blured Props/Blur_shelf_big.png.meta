@@ -103,10 +103,10 @@ TextureImporter:
       name: Blur_shelf_big_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 529
-        height: 137
+        x: 29
+        y: 23
+        width: 540
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

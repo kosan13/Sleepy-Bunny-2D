@@ -103,10 +103,10 @@ TextureImporter:
       name: Blur_scarf_pile_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 218
-        height: 116
+        x: 33
+        y: 36
+        width: 232
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

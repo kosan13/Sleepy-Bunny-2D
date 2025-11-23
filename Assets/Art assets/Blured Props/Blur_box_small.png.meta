@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1df95cf4e271c174abe28ff33b446b46
+guid: 426db3d198f14184a9a54dc210ce2b23
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2498646686659173683
-    second: Blur_Chair_0
+      213: -5864841094055808416
+    second: Blur_box_small_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blur_Chair_0
+      name: Blur_box_small_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 389
-        height: 738
+        x: 36
+        y: 44
+        width: 280
+        height: 210
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc2297ea316035dd0800000000000000
-      internalID: -2498646686659173683
+      spriteID: 062b0b42916eb9ea0800000000000000
+      internalID: -5864841094055808416
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Blur_Chair_0: -2498646686659173683
+      Blur_box_small_0: -5864841094055808416
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

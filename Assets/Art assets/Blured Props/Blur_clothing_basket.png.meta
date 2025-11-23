@@ -103,10 +103,10 @@ TextureImporter:
       name: Blur_clothing_basket_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 263
-        height: 283
+        x: 12
+        y: 51
+        width: 277
+        height: 297
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

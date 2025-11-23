@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 1d92f5e3c89fb6f45b939807c27dc10e
+guid: 8fca54288e713a74a875eb42e88187e8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8073134263801893296
-    second: Blured foreground 2_0
-  - first:
-      213: 5135702082966526210
-    second: Blured foreground 2_1
+      213: 2626639596168332173
+    second: Blur_fan_standing_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blured foreground 2_0
+      name: Blur_fan_standing_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 0
-        width: 377
-        height: 296
+        x: 41
+        y: 27
+        width: 321
+        height: 743
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b152f1f6d8890070800000000000000
-      internalID: 8073134263801893296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blured foreground 2_1
-      rect:
-        serializedVersion: 2
-        x: 936
-        y: 0
-        width: 391
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 209147795dda54740800000000000000
-      internalID: 5135702082966526210
+      spriteID: d83c692dbc2b37420800000000000000
+      internalID: 2626639596168332173
       vertices: []
       indices: 
       edges: []
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Blured foreground 2_0: 8073134263801893296
-      Blured foreground 2_1: 5135702082966526210
+      Blur_fan_standing_0: 2626639596168332173
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

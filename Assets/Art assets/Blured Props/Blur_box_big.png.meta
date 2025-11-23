@@ -103,10 +103,10 @@ TextureImporter:
       name: Blur_box_big_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 377
-        height: 329
+        x: 56
+        y: 27
+        width: 391
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
