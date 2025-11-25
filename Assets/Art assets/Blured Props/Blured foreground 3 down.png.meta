@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 87b986f24509da24da5477af6d9c7dfb
+guid: 1b49fecc06293914190c9b52556a6d28
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -664911666613377399
-    second: Blured foreground 3_0
+      213: 4317323476511528524
+    second: Blured foreground 3 down_0
   - first:
-      213: 8575299494932289139
-    second: Blured foreground 3_1
-  - first:
-      213: 7558242905533744381
-    second: Blured foreground 3_2
+      213: 6850062908218826539
+    second: Blured foreground 3 down_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blured foreground 3_0
+      name: Blured foreground 3 down_0
       rect:
         serializedVersion: 2
-        x: 564
-        y: 881
-        width: 460
-        height: 319
+        x: 193
+        y: 0
+        width: 325
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9862f70bc52c5c6f0800000000000000
-      internalID: -664911666613377399
+      spriteID: c469ce5e3d63aeb30800000000000000
+      internalID: 4317323476511528524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blured foreground 3_1
+      name: Blured foreground 3 down_1
       rect:
         serializedVersion: 2
-        x: 223
+        x: 1155
         y: 0
-        width: 405
-        height: 522
+        width: 310
+        height: 674
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,30 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 376960ee475910770800000000000000
-      internalID: 8575299494932289139
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blured foreground 3_2
-      rect:
-        serializedVersion: 2
-        x: 1001
-        y: 0
-        width: 394
-        height: 319
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: df4847690e544e860800000000000000
-      internalID: 7558242905533744381
+      spriteID: b2f567dfbef401f50800000000000000
+      internalID: 6850062908218826539
       vertices: []
       indices: 
       edges: []
@@ -175,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Blured foreground 3_0: -664911666613377399
-      Blured foreground 3_1: 8575299494932289139
-      Blured foreground 3_2: 7558242905533744381
+      Blured foreground 3 down_0: 4317323476511528524
+      Blured foreground 3 down_1: 6850062908218826539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
