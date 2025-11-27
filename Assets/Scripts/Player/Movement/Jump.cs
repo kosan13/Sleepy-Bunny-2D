@@ -1,15 +1,16 @@
 using System.Runtime.CompilerServices;
 using Animation;
 using UnityEngine;
-
+using static Global.GlobalEnumLibrary;
 using static Global.GlobalFunctionsLibrary;
+using static Global.GlobalVariablesLibrary;
+using static Player.Movement.ForceAccumulate;
 using static Player.PlayerController;
 
 namespace Player.Movement
 {
     public static class Jump
     {
-        private static Rigidbody2D _rigidbody2D;
         private static float _jumpPower;
         private static float _runJumpPower;
         private static float _runJumpMomentumBoost;
@@ -17,30 +18,32 @@ namespace Player.Movement
         public static bool GetIsJumping { get; private set; }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void OnJumpAwake(Rigidbody2D rigidbody2D, float jumpPower, float runJumpPower, float runJumpMomentumBoost)
+        public static void OnJumpAwake(float jumpPower, float runJumpPower, float runJumpMomentumBoost)
         {
-            _rigidbody2D = rigidbody2D;
             _jumpPower = jumpPower;
             _runJumpPower = runJumpPower;
-            GetIsJumping = false;
             _runJumpMomentumBoost = runJumpMomentumBoost;
+            GetIsJumping = false;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnJumpUpdate() {}
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OnJumpFixedUpdate()
         {
-            if (GetIsJumping == false) { _rigidbody2D.linearVelocityY += 0; return; }
-
-            _rigidbody2D.linearVelocityY += Move.GetMoveState switch
-            {
-                MoveState.Walk => Vector2.up.y * _jumpPower,
-                MoveState.Run => Vector2.up.y * (_runJumpPower),
-                _ => _rigidbody2D.linearVelocityY
-            };
-            if (Move.GetMoveState == MoveState.Run) 
-                _rigidbody2D.AddForceX(Move.GetMoveDirection * (_runJumpMomentumBoost * _rigidbody2D.mass), ForceMode2D.Impulse);
+            if (GetIsJumping == false) { PlayerRigidbody.linearVelocityY += 0; return; }
             
+            switch (PlayerMoveState)
+            {
+                case MoveState.Walk:
+                    SetGravityForce(Vector2.up * _jumpPower); break;
+                case MoveState.Run: 
+                    SetGravityForce(Vector2.up * _runJumpPower);
+                    SetRunJumpBoostForce(Vector2.up * _runJumpMomentumBoost);
+                    break;
+                case MoveState.CrouchWalk:
+                case MoveState.CrouchRun:
+                default: break;
+            }
             GetIsJumping = false;
         }
         
@@ -48,14 +51,14 @@ namespace Player.Movement
         {
             if (jump == false) { GetIsJumping = false; return; }
             
-            if (!IsGrounded(_rigidbody2D))
+            if (!IsGrounded(PlayerRigidbody))
             {
                 Debug.LogError("IsGrounded is False"); 
                 GetIsJumping = false;
                 return;
             }
             GetIsJumping = true;
-            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, AnimationsStates.IsJumpingLeft, AnimationsStates.IsJumpingRight);
+            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(GetPlayerController.MainAnimationBone, AnimationsStates.IsJumpingLeft, AnimationsStates.IsJumpingRight);
         }
     }
 }

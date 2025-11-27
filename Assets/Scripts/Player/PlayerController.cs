@@ -2,20 +2,23 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using Animation;
 using Events;
+using Global;
 using UnityEngine;
 using Input;
-using LevelFunctionsLibrary;
 using TimeFunctions;
 using static LevelFunctionsLibrary.LevelFunctions;
 using static DeathTrigger.FallingDeathTrigger;
-using static Player.Movement.Move;
+using static Player.Movement.Walk;
+using static Player.Movement.Run;
 using static Player.Movement.Jump;
+using static Player.Movement.Crouch;
 using static Player.Movement.PushAndPull;
+using static Player.Movement.ForceAccumulate;
 using static UnityEngine.InputSystem.InputAction;
 
 namespace Player
 {
-    public enum PlayerAnimationsDirection
+    public enum PlayerAnimationsDirectionTypes
     {
         Left,
         Right
@@ -29,18 +32,23 @@ namespace Player
         [SerializeField] private float safeFallVelocity;
         
         [Header("Move")]
-        [SerializeField] private float walkSpeed;
-        [SerializeField] private float runSpeed;
+        [SerializeField] private float walkSpeed = 10;
+        [SerializeField] private float runSpeed = 15;
         
         [Header("crouch")]
-        [SerializeField] private float crouchWalkSpeed;
-        [SerializeField] private float crouchRunSpeed;
+        [SerializeField] private float crouchWalkSpeed = 5;
+        [SerializeField] private float crouchRunSpeed = 7.5f;
         
         [Header("Jump")]
-        [SerializeField] private float jumpPower;
-        [SerializeField] private float runJumpPower;
+        [SerializeField] private float jumpPower = 15;
+        [SerializeField] private float runJumpPower = 7.5f;
         [Tooltip("The number you add to the linearVelocity.x on a runJump")]
-        [SerializeField] private float runJumpMomentumBoost;
+        [SerializeField] private float runJumpMomentumBoost = 10;
+        
+        [Header("Force")]
+        [SerializeField] private float gravity = 50;
+        [SerializeField] private float playerForceFalloffValue = 10;
+        [SerializeField] private float runJumpMomentumBoostFalloffValue = 5;
 
         [Header("Colliders")] 
         [Tooltip("Players main collider")]
@@ -51,10 +59,12 @@ namespace Player
         [Header("Others")] 
         [SerializeField] private Transform mainAnimationBone;
         
-        public Rigidbody2D GetRigidbody2D { get; private set; }
         public static PlayerController GetPlayerController { get; private set; }
+        public Rigidbody2D GetRigidbody2D { get; private set; }
 
         public Transform MainAnimationBone => mainAnimationBone;
+        public float WalkSpeed => walkSpeed;
+        public float CrouchWalkSpeed => crouchWalkSpeed;
         
         
         private PlayerInputController _inputControls;
@@ -84,9 +94,12 @@ namespace Player
 
             OnFallingDeathTriggerAwake(GetRigidbody2D, safeFallVelocity);
 
-            OnMovementAwake(GetRigidbody2D, playerCollider, playerCrouchCollider, walkSpeed, runSpeed, crouchWalkSpeed, crouchRunSpeed);
-            OnJumpAwake(GetRigidbody2D, jumpPower, runJumpPower, runJumpMomentumBoost);
+            OnWalkAwake(walkSpeed, crouchWalkSpeed);
+            OnRunAwake(runSpeed, crouchRunSpeed);
+            OnJumpAwake(jumpPower, runJumpPower, runJumpMomentumBoost);
             OnPushAndPullAwake(GetRigidbody2D);
+            OnCrouchAwake(playerCollider, playerCrouchCollider);
+            OnForceAccumulateAwake(gravity, playerForceFalloffValue, runJumpMomentumBoostFalloffValue);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -94,18 +107,25 @@ namespace Player
         {
             OnFallingDeathTriggerUpdate();
             
-            OnMovementUpdate();
+            OnWalkUpdate();
+            OnRunUpdate();
             OnJumpUpdate();
             OnPushAndPullUpdate();
+            OnCrouchUpdate();
+            OnForceAccumulateUpdate();
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void FixedUpdate()
         {
             OnFallingDeathTriggerFixedUpdate();
                 
-            OnMovementFixedUpdate();
+            OnWalkFixedUpdate();
+            OnRunFixedUpdate();
             OnJumpFixedUpdate();
             OnPushAndPullFixedUpdate();
+            OnCrouchFixedUpdate();
+            OnForceAccumulateFixedUpdate();
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void OnCollisionEnter2D(Collision2D other) => OnPushAndPullCollisionEnter2D(other);
@@ -163,7 +183,7 @@ namespace Player
         
         public void TriggerDeathEvent()
         {
-            AnimationsStates animationsStates = AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(GetRigidbody2D, mainAnimationBone, AnimationsStates.IsDyingLeft, AnimationsStates.IsDyingRight);
+            AnimationsStates animationsStates = AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsDyingLeft, AnimationsStates.IsDyingRight);
             if (!AnimationsStateMachine.StateMachine.AnimationMachineStatesMapping.TryGetValue(animationsStates, out AnimationsStateMachine.AnimationMachineStates animationMachineStates))
                 Debug.LogError("IsDying is do not exist in AnimationMachineStatesMapping");
             Debug.Log(Time.time);

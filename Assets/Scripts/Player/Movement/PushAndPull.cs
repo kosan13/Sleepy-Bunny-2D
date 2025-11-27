@@ -13,10 +13,7 @@ namespace Player.Movement
 
         public static bool PushOrPull { get; private set; }
 
-        public static void OnPushAndPullAwake(Rigidbody2D rigidbody2D)
-        {
-            _rigidbody2D = rigidbody2D;
-        }
+        public static void OnPushAndPullAwake(Rigidbody2D rigidbody2D) => _rigidbody2D = rigidbody2D;
 
         public static void OnPushAndPullUpdate() {}
         public static void OnPushAndPullFixedUpdate()
@@ -45,7 +42,7 @@ namespace Player.Movement
         {
             Rigidbody2D rigidbody2D = _pushAndPullObject.GetComponent<Rigidbody2D>();
             rigidbody2D.linearVelocityX = _rigidbody2D.linearVelocityX;
-            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(_rigidbody2D, GetPlayerController.MainAnimationBone, animationsStateLeft, animationsStateRight);
+            AnimationsStateMachine.SetPlayerAnimationAndAnimationsDirection(GetPlayerController.MainAnimationBone, animationsStateLeft, animationsStateRight);
         }
     }
 }
