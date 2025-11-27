@@ -381,7 +381,7 @@ Rigidbody2D:
   m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3.5
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -405,14 +405,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41213ec812150c146931daee69d65c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  safeFallVelocity: 100000
+  safeFallVelocity: 100000000
   walkSpeed: 10
   runSpeed: 17
-  crouchWalkSpeed: 0
-  crouchRunSpeed: 0
+  crouchWalkSpeed: 5
+  crouchRunSpeed: 5
   jumpPower: 20
   runJumpPower: 20
-  runJumpMomentumBoost: 60
+  runJumpMomentumBoost: 10
+  gravity: 50
+  playerForceFalloffValue: 10
+  runJumpMomentumBoostFalloffValue: 5
   playerCollider: {fileID: 1008658918702676219}
   playerCrouchCollider: {fileID: 1970488452797023313}
   mainAnimationBone: {fileID: 84935913706718052}
