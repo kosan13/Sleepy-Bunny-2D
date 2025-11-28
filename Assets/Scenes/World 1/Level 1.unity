@@ -1267,10 +1267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb79391a1fcc7b740940cd52578e155c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RightParalex
+  Self: {fileID: 0}
+  CellingForeground: 0
   paralexEffect: 0.5
-  rightside: {fileID: 0}
-  middle: {fileID: 0}
-  leftside: {fileID: 0}
 --- !u!212 &495901896
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1392,26 +1391,6 @@ PrefabInstance:
     - target: {fileID: 4849739462627002050, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: DefaultBlend.Style
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
-      propertyPath: runJumpPower
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
-      propertyPath: crouchRunSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
-      propertyPath: crouchWalkSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
-      propertyPath: safeFallVelocity
-      value: 100000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
-      propertyPath: runJumpMomentumBoost
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7208766014758903118, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: Priority.Enabled
