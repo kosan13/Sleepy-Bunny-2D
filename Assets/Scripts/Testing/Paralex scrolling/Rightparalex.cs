@@ -35,6 +35,9 @@ public class RightParalex : MonoBehaviour
     //is the foreground gorounded or not?
     public bool CellingForeground = false;
 
+    //not floor or ceelling 
+    public bool neither = false;
+
     //Check for if statments
     private bool Stuck;
 
@@ -78,6 +81,12 @@ public class RightParalex : MonoBehaviour
 
         // X should allways be modified to keep the foreground in position
         transform.position = new Vector3(startposX + distx, transform.position.y, 0);
+
+        if (neither)
+        {
+            transform.position = new Vector3(transform.position.x, Top.transform.position.y - (0.5f * Render.bounds.size.y), 0);
+            return;
+        }
 
         //The foreground should not be able to moveup or down beyond thir image.
         //To fix that I have made a series of if statments that makes sure they don't
