@@ -22,11 +22,12 @@ public class BecomeCamera : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Work damit");
+        
         if (other.gameObject.layer != PlayerLayer) return;
 
         if (!currentCamera)
         {
+            //Debug.Log("Work damit");
             if (!secondHit)
             {
                 secondHit = true;
