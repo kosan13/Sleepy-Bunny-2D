@@ -95,7 +95,7 @@ namespace Input
             ""id"": ""b529bc30-a7ab-4212-a247-7672ce875729"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Walk"",
                     ""type"": ""Value"",
                     ""id"": ""9297d46d-d9bd-487e-9d21-2f709afa976b"",
                     ""expectedControlType"": ""Integer"",
@@ -127,7 +127,7 @@ namespace Input
                     ""id"": ""102b1322-e9af-4700-a689-28ed3dd42ff8"",
                     ""expectedControlType"": ""Integer"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
@@ -157,7 +157,7 @@ namespace Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Walk"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -168,7 +168,7 @@ namespace Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -179,7 +179,7 @@ namespace Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -219,7 +219,7 @@ namespace Input
                 {
                     ""name"": ""negative"",
                     ""id"": ""4cea4d0a-260f-4847-b219-fa8aab730240"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -230,7 +230,7 @@ namespace Input
                 {
                     ""name"": ""positive"",
                     ""id"": ""3f872b6f-c2af-4c7f-ae34-7373406e84ec"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -267,7 +267,7 @@ namespace Input
 }");
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+            m_Player_Walk = m_Player.FindAction("Walk", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_PushOrPull = m_Player.FindAction("PushOrPull", throwIfNotFound: true);
             m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
@@ -353,7 +353,7 @@ namespace Input
         // Player
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-        private readonly InputAction m_Player_Move;
+        private readonly InputAction m_Player_Walk;
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_PushOrPull;
         private readonly InputAction m_Player_Run;
@@ -371,9 +371,9 @@ namespace Input
             /// </summary>
             public PlayerActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
             /// <summary>
-            /// Provides access to the underlying input action "Player/Move".
+            /// Provides access to the underlying input action "Player/Walk".
             /// </summary>
-            public InputAction @Move => m_Wrapper.m_Player_Move;
+            public InputAction @Walk => m_Wrapper.m_Player_Walk;
             /// <summary>
             /// Provides access to the underlying input action "Player/Jump".
             /// </summary>
@@ -420,9 +420,9 @@ namespace Input
             {
                 if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
+                @Walk.started += instance.OnWalk;
+                @Walk.performed += instance.OnWalk;
+                @Walk.canceled += instance.OnWalk;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -449,9 +449,9 @@ namespace Input
             /// <seealso cref="PlayerActions" />
             private void UnregisterCallbacks(IPlayerActions instance)
             {
-                @Move.started -= instance.OnMove;
-                @Move.performed -= instance.OnMove;
-                @Move.canceled -= instance.OnMove;
+                @Walk.started -= instance.OnWalk;
+                @Walk.performed -= instance.OnWalk;
+                @Walk.canceled -= instance.OnWalk;
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
@@ -508,12 +508,12 @@ namespace Input
         public interface IPlayerActions
         {
             /// <summary>
-            /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "Walk" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnMove(InputAction.CallbackContext context);
+            void OnWalk(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>

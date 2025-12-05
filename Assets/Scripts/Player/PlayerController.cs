@@ -63,12 +63,10 @@ namespace Player
         public Rigidbody2D GetRigidbody2D { get; private set; }
 
         public Transform MainAnimationBone => mainAnimationBone;
-        public float WalkSpeed => walkSpeed;
-        public float CrouchWalkSpeed => crouchWalkSpeed;
         
         
         private PlayerInputController _inputControls;
-        private PlayerInputController.PlayerActions PlayerMap => _inputControls.Player;
+        public PlayerInputController.PlayerActions PlayerMap => _inputControls.Player;
         
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -138,8 +136,8 @@ namespace Player
         
         private void MovementControlsBind()
         {
-            PlayerMap.Move.performed += OnMovePreset;
-            PlayerMap.Move.canceled += OnMoveRelist;
+            PlayerMap.Walk.performed += OnWalkPreset;
+            PlayerMap.Walk.canceled += OnWalkRelist;
             
             PlayerMap.Run.performed += OnRunPreset;
             PlayerMap.Run.canceled += OnRunRelist;
@@ -155,9 +153,9 @@ namespace Player
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static void OnMovePreset(CallbackContext callbackContext) => OnWalk(callbackContext.ReadValue<float>());
+        private static void OnWalkPreset(CallbackContext callbackContext) => OnWalk(callbackContext.ReadValue<float>());
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static void OnMoveRelist(CallbackContext callbackContext) => OnWalk(0);
+        private static void OnWalkRelist(CallbackContext callbackContext) => OnWalk(0);
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void OnRunPreset(CallbackContext callbackContext) => OnRun(callbackContext.ReadValue<float>());
@@ -192,6 +190,18 @@ namespace Player
             Debug.Log(Time.time);
 
             ResetCurrentLevel();
+        }
+
+
+        public static bool CheckImputeIsPreset()
+        {
+            if (GetPlayerController.PlayerMap.Walk.IsPressed()) return true;
+            if (GetPlayerController.PlayerMap.Run.IsPressed()) return true;
+            if (GetPlayerController.PlayerMap.Jump.IsPressed()) return true;
+            if (GetPlayerController.PlayerMap.PushOrPull.IsPressed()) return true;
+            if (GetPlayerController.PlayerMap.Crouch.IsPressed()) return true;
+            if (GetPlayerController.PlayerMap.Interact.IsPressed()) return true;
+            return false;
         }
     }
 }

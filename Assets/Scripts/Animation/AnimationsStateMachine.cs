@@ -61,15 +61,75 @@ namespace Animation
             }
         }
         
-
-
-        public static bool TrySetStateIsIdling(Transform mainAnimationBone)
+        public static bool TrySetStateIsIdling(Transform mainAnimationBone) 
         {
+            if (Crouch.GetIsCrouching) return false;
             if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            if (PlayerController.CheckImputeIsPreset()) return false;
             SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsIdlingLeft, AnimationsStates.IsIdlingRight);
             return true;
         }
+        public static bool TrySetStateIsCrouchingIdling(Transform mainAnimationBone)
+        {
+            if (!Crouch.GetIsCrouching) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.CheckImputeIsPreset()) return false;
+            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsCrouchingIdlingLeft, AnimationsStates.IsCrouchingIdlingRight);
+            return true;
+        }
+        
+        public static bool TrySetStateIsFalling(Transform mainAnimationBone)
+        {
+            if (IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityY >= 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsFallingLeft, AnimationsStates.IsFallingRight);
+            return true;
+        }
+        
+        public static bool TrySetStateIsLanding(Transform mainAnimationBone)
+        {
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            // if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
+            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsLandingLeft, AnimationsStates.IsLandingRight);
+            return true;
+        }
+        
+        public static bool TrySetStateIsWalking(Transform mainAnimationBone)
+        {
+            if (Crouch.GetIsCrouching) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!PlayerController.GetPlayerController.PlayerMap.Walk.IsPressed()) return false;
+            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsWalkingLeft, AnimationsStates.IsWalkingRight);
+            return true;
+        }
+        public static bool TrySetStateCrouchWalk(Transform mainAnimationBone)
+        {
+            if (!Crouch.GetIsCrouching) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!PlayerController.GetPlayerController.PlayerMap.Walk.IsPressed()) return false;
+            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsCrouchingWalkLeft, AnimationsStates.IsCrouchingWalkRight);
+            return true;
+        }
+        
+        public static bool TrySetStateIsRunning(Transform mainAnimationBone)
+        {
+            if (Crouch.GetIsCrouching) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!PlayerController.GetPlayerController.PlayerMap.Run.IsPressed()) return false;
+            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsRunningLeft, AnimationsStates.IsRunningRight);
+            return true;
+        }
+        public static bool TrySetStateCrouchRun(Transform mainAnimationBone)
+        {
+            if (!Crouch.GetIsCrouching) return false;
+            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
+            if (!PlayerController.GetPlayerController.PlayerMap.Run.IsPressed()) return false;
+            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsCrouchingRunLeft, AnimationsStates.IsCrouchingRunRight);
+            return true;
+        }
+        
+        
+        
         public static bool TrySetStateIsPushing(Transform mainAnimationBone)
         {
             if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
@@ -84,68 +144,15 @@ namespace Animation
             SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsPullingLeft, AnimationsStates.IsPullingRight);
             return true;
         }
-        public static bool TrySetStateIsWalking(Transform mainAnimationBone)
-        {
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsWalkingLeft, AnimationsStates.IsWalkingRight);
-            return true;
-        }
-        public static bool TrySetStateIsRunning(Transform mainAnimationBone)
-        {
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsRunningLeft, AnimationsStates.IsRunningRight);
-            return true;
-        }
-        public static bool TrySetStateCrouchWalk(Transform mainAnimationBone)
-        {
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX < PlayerController.GetPlayerController.WalkSpeed) return false;
-            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsCrouchingWalkLeft, AnimationsStates.IsCrouchingWalkRight);
-            return true;
-        }
-        public static bool TrySetStateCrouchRun(Transform mainAnimationBone)
-        {
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX < PlayerController.GetPlayerController.CrouchWalkSpeed) return false;
-            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsCrouchingRunLeft, AnimationsStates.IsCrouchingRunRight);
-            return true;
-        }
         public static bool TrySetStateIsJumping(Transform mainAnimationBone)
         {
             if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
             SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsJumpingLeft, AnimationsStates.IsJumpingRight);
-            return true;
-        }
-        public static bool TrySetStateIsFalling(Transform mainAnimationBone)
-        {
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsFallingLeft, AnimationsStates.IsFallingRight);
-            return true;
-        }
-        public static bool TrySetStateIsLanding(Transform mainAnimationBone)
-        {
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsLandingLeft, AnimationsStates.IsLandingRight);
             return true;
         }
         public static bool TrySetStateIsDying(Transform mainAnimationBone)
         {
             SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsDyingLeft, AnimationsStates.IsDyingRight);
-            return true;
-        }
-        public static bool TrySetStateIsIsCrouchingIdling(Transform mainAnimationBone)
-        {
-            if (!Crouch.GetIsCrouching) return false;
-            if (!IsGrounded(PlayerController.GetPlayerController.GetRigidbody2D)) return false;
-            if (PlayerController.GetPlayerController.GetRigidbody2D.linearVelocityX != 0) return false;
-            SetPlayerAnimationAndAnimationsDirection(mainAnimationBone, AnimationsStates.IsCrouchingIdlingLeft, AnimationsStates.IsCrouchingIdlingRight);
             return true;
         }
         public static bool TrySetStateIsCrouching(Transform mainAnimationBone)

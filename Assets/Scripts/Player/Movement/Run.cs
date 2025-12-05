@@ -38,7 +38,11 @@ namespace Player.Movement
         
         public static void OnRun(float moveDirection)
         {
-            if (IsGrounded(PlayerRigidbody)) Walk.OnWalk(moveDirection);
+            if (!IsGrounded(PlayerRigidbody))
+            {
+                Walk.OnWalk(moveDirection);
+                return;
+            }
             PlayerMoveDirection = moveDirection;
             UpdatePlayerAnimationsDirection();
             

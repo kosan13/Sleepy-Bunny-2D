@@ -8,13 +8,13 @@ namespace Player.Movement
 {
     public static class ForceAccumulate
     {
-        private static float _gravity;
         private static Vector2 _accumulatedForce;
         
         private static Vector2 _inputForce;
         private static float _inputForceFalloffValue;
         
         private static Vector2 _gravityForce;
+        private static float _gravity;
         
         private static Vector2 _runJumpBoostForce;
         private static float _runJumpBoostForceFalloffValue;
