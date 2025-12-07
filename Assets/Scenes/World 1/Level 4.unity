@@ -1248,6 +1248,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2769464494034947073, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3290143067729226266, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.312157
@@ -1888,6 +1892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2769464494034947073, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3290143067729226266, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.887844
@@ -3573,7 +3581,7 @@ GameObject:
   - component: {fileID: 1268078329}
   - component: {fileID: 1268078328}
   m_Layer: 3
-  m_Name: Floor (2)
+  m_Name: windo sil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3767,6 +3775,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2769464494034947073, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3290143067729226266, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
       propertyPath: m_LocalPosition.x
       value: -109.91216
@@ -5093,6 +5105,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2769464494034947073, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3290143067729226266, guid: 3f9d3c033eb3f874e8b8087448381b70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.2878437
@@ -6282,6 +6298,7 @@ SceneRoots:
   - {fileID: 1259073006}
   - {fileID: 887260002}
   - {fileID: 506002089}
+  - {fileID: 2084654893}
   - {fileID: 88083136}
   - {fileID: 1268078330}
   - {fileID: 434721705}
@@ -6323,7 +6340,7 @@ SceneRoots:
   - {fileID: 1646487571}
   - {fileID: 5315817229695862467}
   - {fileID: 1698347283}
-  - {fileID: 2084654893}
+  - {fileID: 1469399632}
   - {fileID: 556064232}
   - {fileID: 552163825}
   - {fileID: 1872581445}
@@ -6346,4 +6363,3 @@ SceneRoots:
   - {fileID: 1886474825}
   - {fileID: 1970479321}
   - {fileID: 464419822}
-  - {fileID: 1469399632}
