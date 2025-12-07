@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class VinjetFlicker : MonoBehaviour
 {
+    private SpriteRenderer spriterender;
     [SerializeField] Sprite[] flickerStates;
 
     // [SerializeField] GameObject[] Cinemachine; No clue how to fix that ask mina perhaps?
@@ -9,21 +10,22 @@ public class VinjetFlicker : MonoBehaviour
 
     [SerializeField] int flickerSpeed;
 
-    public GameObject self;
+    
 
-    public int CurrentSprite;
+    private int CurrentSprite;
 
-    private int flickerSpeedCashed;
+    private int flickerTime;
 
     private void Start()
     {
-        flickerSpeedCashed = flickerSpeed;
+        flickerTime = flickerSpeed;
+        spriterender = GetComponent<SpriteRenderer>();
         
     }
-    private void FixedUpdate()
+    private void Update()
     {
 
-        if(flickerSpeed <= 0)
+        if(flickerTime <= 0)
         {
 
             if (CurrentSprite == 2)
@@ -32,18 +34,17 @@ public class VinjetFlicker : MonoBehaviour
                 CurrentSprite = 0;
                 return;
             }
-            flickerSpeed = flickerSpeedCashed;
+            flickerTime = flickerSpeed;
 
             newState = flickerStates[CurrentSprite];
-            self.GetComponent<SpriteRenderer>().sprite = newState;
-
+            spriterender.sprite = newState;
 
 
             CurrentSprite++;
             return;
         }
 
-        flickerSpeed--;
+        flickerTime--;
         
     }
 }
