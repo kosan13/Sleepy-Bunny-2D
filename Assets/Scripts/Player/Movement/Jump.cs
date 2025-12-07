@@ -38,7 +38,7 @@ namespace Player.Movement
                     SetGravityForce(Vector2.up * _jumpPower); break;
                 case MoveState.Run: 
                     SetGravityForce(Vector2.up * _runJumpPower);
-                    SetRunJumpBoostForce(Vector2.up * _runJumpMomentumBoost);
+                    SetRunJumpBoostForce(Vector2.right * _runJumpMomentumBoost * PlayerMoveDirection);
                     break;
                 case MoveState.CrouchWalk:
                 case MoveState.CrouchRun:
