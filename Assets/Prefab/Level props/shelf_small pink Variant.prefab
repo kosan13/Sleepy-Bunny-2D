@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.7607843
       objectReference: {fileID: 0}
+    - target: {fileID: 4504790260299121584, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6200711517642038736, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -26,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6200711517642038736, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.71
+      value: 4.49
       objectReference: {fileID: 0}
     - target: {fileID: 6200711517642038736, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63,6 +67,22 @@ PrefabInstance:
     - target: {fileID: 7467913779943644283, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
       propertyPath: m_Name
       value: shelf_small pink Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3861948
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4692529
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.017306626
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1516502
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

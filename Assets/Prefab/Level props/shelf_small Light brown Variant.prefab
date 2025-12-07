@@ -68,6 +68,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: shelf_small Light brown Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3861948
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4692529
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.017306626
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541123779626315846, guid: 5f678884c6c490b4f98a85058318e615, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1516502
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -8,17 +8,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 690445367063825759, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.809
+      objectReference: {fileID: 0}
     - target: {fileID: 1433631965234073464, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
       propertyPath: m_Color.g
       value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433631965234073464, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579124486088632864, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396571327760357107, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.819
       objectReference: {fileID: 0}
     - target: {fileID: 3919856278993653286, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
       propertyPath: m_Name
       value: nightstand_table pink
       objectReference: {fileID: 0}
+    - target: {fileID: 4903326992985023435, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6587604
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903326992985023435, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.6103079
+      objectReference: {fileID: 0}
     - target: {fileID: 5637436646863112103, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
       propertyPath: m_Color.g
       value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637436646863112103, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7497385771910655262, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7497385771910655262, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.91
+      value: 7.93
       objectReference: {fileID: 0}
     - target: {fileID: 7497385771910655262, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63,6 +91,10 @@ PrefabInstance:
     - target: {fileID: 8766274556834021422, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
       propertyPath: m_Color.g
       value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766274556834021422, guid: 533e2091f3f49b048b520c4e292ddb6a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
