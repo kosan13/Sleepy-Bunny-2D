@@ -421,17 +421,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41213ec812150c146931daee69d65c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  safeFallVelocity: 100000000
+  safeFallVelocity: 50
   walkSpeed: 10
   runSpeed: 17
   crouchWalkSpeed: 5
   crouchRunSpeed: 5
   jumpPower: 25
   runJumpPower: 20
-  runJumpMomentumBoost: 10
-  gravity: 50
-  playerForceFalloffValue: 10
-  runJumpMomentumBoostFalloffValue: 5
+  runJumpMomentumBoost: 50
+  waterPush: {x: 0, y: 25}
+  accumulateForceFalloffValue:
+    gravity: 50
+    inputForceFalloffValue: 10
+    runJumpBoostForceFalloffValue: 5
+    waterForceFallofValue: 20
   playerCollider: {fileID: 1008658918702676219}
   playerCrouchCollider: {fileID: 1970488452797023313}
   mainAnimationBone: {fileID: 84935913706718052}
