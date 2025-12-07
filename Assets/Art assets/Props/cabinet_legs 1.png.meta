@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 1330297b58df7854c843082bce985922
+guid: 1e373d741e473f44282de04d4ddfa3f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2842481665443581134
-    second: cabinet_legs_0
+      213: -9119228221745158078
+    second: cabinet_legs 1_0
   - first:
-      213: 1989242718525712944
-    second: cabinet_legs_1
-  - first:
-      213: -6976105629860864182
-    second: cabinet_legs_2
+      213: 501122961293291971
+    second: cabinet_legs 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,35 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cabinet_legs_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 224
-        width: 6
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 233bca24cf97d88d0800000000000000
-      internalID: -2842481665443581134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabinet_legs_1
+      name: cabinet_legs 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 159
-        height: 223
+        width: 160
+        height: 226
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,17 +118,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03ae1c986b53b9b10800000000000000
-      internalID: 1989242718525712944
+      spriteID: 248a9218f3ef17180800000000000000
+      internalID: -9119228221745158078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cabinet_legs_2
+      name: cabinet_legs 1_1
       rect:
         serializedVersion: 2
-        x: 563
+        x: 564
         y: 0
         width: 155
         height: 223
@@ -165,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4f5a8004e4ef2f90800000000000000
-      internalID: -6976105629860864182
+      spriteID: 3c1bda0ada854f600800000000000000
+      internalID: 501122961293291971
       vertices: []
       indices: 
       edges: []
@@ -185,9 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cabinet_legs_0: -2842481665443581134
-      cabinet_legs_1: 1989242718525712944
-      cabinet_legs_2: -6976105629860864182
+      cabinet_legs 1_0: -9119228221745158078
+      cabinet_legs 1_1: 501122961293291971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
