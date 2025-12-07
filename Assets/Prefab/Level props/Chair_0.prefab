@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8587871146157769705}
   - component: {fileID: 7242701897068998438}
   - component: {fileID: 8794118009774256095}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chair_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 5843985864524226762, guid: 01a2bb0d19995bb4f8d7d07fc646c7ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
