@@ -2,7 +2,6 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using Animation;
 using Events;
-using Global;
 using UnityEngine;
 using Input;
 using TimeFunctions;
@@ -44,11 +43,12 @@ namespace Player
         [SerializeField] private float runJumpPower = 7.5f;
         [Tooltip("The number you add to the linearVelocity.x on a runJump")]
         [SerializeField] private float runJumpMomentumBoost = 10;
-        
+
+        [Header("Obstacles")]
+        [SerializeField] private Vector2 waterPush;
+
         [Header("Force")]
-        [SerializeField] private float gravity = 50;
-        [SerializeField] private float playerForceFalloffValue = 10;
-        [SerializeField] private float runJumpMomentumBoostFalloffValue = 5;
+        [SerializeField] private AccumulateForceFalloffValue accumulateForceFalloffValue;
 
         [Header("Colliders")] 
         [Tooltip("Players main collider")]
@@ -63,8 +63,8 @@ namespace Player
         public Rigidbody2D GetRigidbody2D { get; private set; }
 
         public Transform MainAnimationBone => mainAnimationBone;
-        
-        
+        public Vector2 WaterPush => waterPush;
+
         private PlayerInputController _inputControls;
         public PlayerInputController.PlayerActions PlayerMap => _inputControls.Player;
         
@@ -97,7 +97,7 @@ namespace Player
             OnJumpAwake(jumpPower, runJumpPower, runJumpMomentumBoost);
             OnPushAndPullAwake(GetRigidbody2D);
             OnCrouchAwake(playerCollider, playerCrouchCollider);
-            OnForceAccumulateAwake(gravity, playerForceFalloffValue, runJumpMomentumBoostFalloffValue);
+            OnForceAccumulateAwake(accumulateForceFalloffValue);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

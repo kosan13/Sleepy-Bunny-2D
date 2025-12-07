@@ -7,7 +7,12 @@ namespace Global
     public static class GlobalVariablesLibrary
     {
         #region Player
-        
+
+        public const int PlayerMaxVelocityX = 100;
+        public const int PlayerMaxVelocityY = 100;
+        public static int PlayerMinVelocityX => -PlayerMaxVelocityX;
+        public static int PlayerMinVelocityY => -PlayerMaxVelocityY;
+
         public static int PlayerLayer { get; } = 7;
         public static int PlayerLayerMask { get; } = 1<<PlayerLayer; // PlayerLayer in bits
         
@@ -33,6 +38,19 @@ namespace Global
         public static int GroundLayerMask { get; } = 1<<GroundLayer; // GroundLayer in bits
 
         #endregion
-        
+
+        #region Water
+
+        public static int WaterLayer { get; } = 8;
+        public static int WaterLayerMask { get; } = 1 << WaterLayer; // GroundLayer in bits
+
+        #endregion
+
+        #region fan
+
+        public static int FanLayer { get; } = 9;
+        public static int FanLayerMask { get; } = 1 << FanLayer; // GroundLayer in bits
+
+        #endregion
     }
 }
