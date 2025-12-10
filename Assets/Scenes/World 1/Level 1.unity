@@ -342,7 +342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4942755092972379921, guid: fce5ac845faf977408e05bda76a506e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 194.8
+      value: 193.9
       objectReference: {fileID: 0}
     - target: {fileID: 4942755092972379921, guid: fce5ac845faf977408e05bda76a506e3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -847,10 +847,6 @@ PrefabInstance:
     - target: {fileID: 4849739462627002050, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: DefaultBlend.Style
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025853272783258329, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
-      propertyPath: jumpPower
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5048146334441889167, guid: 9fb30c1e454b5c74e80cb261f5dc1d61, type: 3}
       propertyPath: m_SortingOrder
@@ -2557,7 +2553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8305512231717897068, guid: 51be0d733f1699f4c96aea942f726a4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.94
+      value: 2.07
       objectReference: {fileID: 0}
     - target: {fileID: 8305512231717897068, guid: 51be0d733f1699f4c96aea942f726a4c, type: 3}
       propertyPath: m_LocalPosition.z
