@@ -245,7 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395656663335463088}
   - component: {fileID: 4265220069044187409}
-  - component: {fileID: 7536226464650731072}
+  - component: {fileID: 6604222174826091326}
   m_Layer: 7
   m_Name: Vinjet
   m_TagString: Untagged
@@ -316,7 +316,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 15
   m_Sprite: {fileID: -2732082321682701050, guid: a14f7ca1473f1ef4ba77dd6886890443, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7536226464650731072
+--- !u!114 &6604222174826091326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,11 +339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VinjetFlicker
   flickerStates:
-  - {fileID: 3698876903627102819, guid: 8108dc040ef0bd4468bf618551f3ff85, type: 3}
   - {fileID: -2732082321682701050, guid: a14f7ca1473f1ef4ba77dd6886890443, type: 3}
-  flickerSpeed: 30
-  self: {fileID: 7195041944097642912}
-  CurrentSprite: 0
+  - {fileID: 3698876903627102819, guid: 8108dc040ef0bd4468bf618551f3ff85, type: 3}
+  flickerSpeed: 20
 --- !u!1 &7768764931942942045
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +405,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &5025853272783258329
 MonoBehaviour:
@@ -426,15 +424,15 @@ MonoBehaviour:
   runSpeed: 17
   crouchWalkSpeed: 5
   crouchRunSpeed: 5
-  jumpPower: 25
-  runJumpPower: 20
-  runJumpMomentumBoost: 50
-  waterPush: {x: 0, y: 25}
+  jumpPower: 22
+  runJumpPower: 15
+  runJumpMomentumBoost: 20
+  waterPush: {x: 0, y: 10}
   accumulateForceFalloffValue:
     gravity: 50
     inputForceFalloffValue: 10
     runJumpBoostForceFalloffValue: 5
-    waterForceFallofValue: 20
+    waterForceFallofValue: 50
   playerCollider: {fileID: 1008658918702676219}
   playerCrouchCollider: {fileID: 1970488452797023313}
   mainAnimationBone: {fileID: 84935913706718052}
