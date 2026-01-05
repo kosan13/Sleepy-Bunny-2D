@@ -37,17 +37,13 @@ public class BecomeCamera : MonoBehaviour
             currentCamera = true;
             secondHit = false;
         }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer != PlayerLayer) return;
 
-        if (currentCamera)
-        {
-            if (!secondHit)
-            {
-                secondHit = true;
-                return;
-            }
-            gameObject.GetComponent<CinemachineCamera>().Priority = -1;
-            currentCamera = false;
-            secondHit = false;
-        }
+        gameObject.GetComponent<CinemachineCamera>().Priority = -1;
+        currentCamera = false;
+        secondHit = false;
     }
 }
