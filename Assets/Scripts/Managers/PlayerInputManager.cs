@@ -3,6 +3,7 @@ using Input;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ using static UnityEngine.InputSystem.InputAction;
 [RequireComponent(typeof(PlayerCameraController))]
 public class PlayerInputManager : MonoBehaviour
 {
+    public static UnityEvent<InputDevice> InputDeviceChanged = new UnityEvent<InputDevice>();
     public PlayerInputController.PlayerActions playerMap => inputControls.Player;
     public PlayerInputController.CameraActions cameraMap => inputControls.Camera;
     [SerializeField] GameObject pauseMenuCanvas;
@@ -25,6 +27,8 @@ public class PlayerInputManager : MonoBehaviour
     ObjectMovingComponent objectMovingComponent;
     PlayerInputController inputControls;
     PlayerCameraController cameraController;
+
+    public static bool UsingKeyboardAndMouse;
 
     private void Awake()
     {
@@ -37,14 +41,27 @@ public class PlayerInputManager : MonoBehaviour
         playerMap.Enable();
         cameraMap.Enable();
 
-
+        InputSystem.onActionChange += InputActionChangeCallback;
         SetupInputBindings();
+        Debug.Log("penis");
         LevelFunctionsLibrary.LevelFunctions.togglePause.AddListener(PauseInput);
     }
-    
-        private void OnDisable()
+    private void InputActionChangeCallback(object obj, InputActionChange change)
     {
+        if (change == InputActionChange.ActionPerformed)
+        {
+            InputAction receivedInputAction = (InputAction)obj;
 
+            InputDevice lastDevice = receivedInputAction.activeControl.device;
+            if (lastDevice.name.Equals("Mouse") || receivedInputAction.name == "Navigate" || receivedInputAction.name == "Look") return;
+            UsingKeyboardAndMouse = lastDevice.name.Equals("Keyboard");
+            InputDeviceChanged.Invoke(lastDevice);
+        }
+    }
+
+    private void OnDisable()
+    {
+        InputSystem.onActionChange -= InputActionChangeCallback;
         RemoveInputBindings();
        
         playerMap.Disable();

@@ -34,35 +34,27 @@ public class ToolTipController : MonoBehaviour
         tooltipText = tooltipTextObject.GetComponent<TextMeshPro>();
         tooltipImage = tooltipTextObject.GetComponent<SpriteRenderer>();
         if (tooltipImage) usingImages = true;
-        InputSystem.onActionChange += InputActionChangeCallback;
+        PlayerInputManager.InputDeviceChanged.AddListener(UpdateInputDevice);
     }
     private void OnDisable()
     {
-        InputSystem.onActionChange -= InputActionChangeCallback;
+        PlayerInputManager.InputDeviceChanged.RemoveListener(UpdateInputDevice);
     }
-    private void InputActionChangeCallback(object obj, InputActionChange change)
+    private void UpdateInputDevice(InputDevice newDevice)
     {
-        if (change == InputActionChange.ActionPerformed)
+        if(isKeyboardAndMouse == PlayerInputManager.UsingKeyboardAndMouse) return;
+        isKeyboardAndMouse = PlayerInputManager.UsingKeyboardAndMouse;
+        if (usingImages)
         {
-            InputAction receivedInputAction = (InputAction)obj;
-            
-            InputDevice lastDevice = receivedInputAction.activeControl.device;
-            if (lastDevice.name.Equals("Mouse") || receivedInputAction.name == "Navigate" || receivedInputAction.name == "Look") return;
-            isKeyboardAndMouse = lastDevice.name.Equals("Keyboard");
-            if (usingImages)
-            {
-                if (isKeyboardAndMouse && tooltipImage.sprite != keyboardTextAsImage) tooltipImage.sprite = keyboardTextAsImage;
-                if (!isKeyboardAndMouse && tooltipImage.sprite != controllerTextAsImage) tooltipImage.sprite = controllerTextAsImage;
-            }
-            else
-            {
-                if (isKeyboardAndMouse && tooltipText.text != keyboardText) tooltipText.text = keyboardText;
-                if (!isKeyboardAndMouse && tooltipText.text != controllerText) tooltipText.text = controllerText;
-            }
-           
+            if (isKeyboardAndMouse && tooltipImage.sprite != keyboardTextAsImage) tooltipImage.sprite = keyboardTextAsImage;
+            if (!isKeyboardAndMouse && tooltipImage.sprite != controllerTextAsImage) tooltipImage.sprite = controllerTextAsImage;
+        }
+        else
+        {
+            if (isKeyboardAndMouse && tooltipText.text != keyboardText) tooltipText.text = keyboardText;
+            if (!isKeyboardAndMouse && tooltipText.text != controllerText) tooltipText.text = controllerText;
         }
     }
-       
     
     private void OnTriggerEnter2D(Collider2D collision)
     {

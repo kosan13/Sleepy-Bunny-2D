@@ -22,7 +22,7 @@ public class ObjectMovingComponent : MonoBehaviour
         if(interactableRB && grabbing)
         {
             interactableRB.linearVelocity = moveCompRB.linearVelocity;
-            if (movementController.CurrentState != MovementState.Walk && movementController.CurrentState != MovementState.Idle)
+            if (movementController.CurrentState != MovementState.Walk && movementController.CurrentState != MovementState.Idle && movementController.CurrentState != MovementState.Run)
             {
                 ReleaseObject();
             }

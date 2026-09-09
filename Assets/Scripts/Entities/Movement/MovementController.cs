@@ -10,10 +10,10 @@ public class MovementController : MonoBehaviour
 {
     [Header("Move")]
     [SerializeField] private float walkSpeed = 10;
-    [SerializeField] private float runSpeed = 15;
+    [SerializeField] private float runModifier = 1.5f;
 
     [Header("Crouch")]
-    [SerializeField] private float crouchWalkSpeed = 5;
+    [SerializeField] private float crouchWalkModifier = .5f;
 
     [Header("Jump")]
     [SerializeField] private float jumpPower = 15;
@@ -21,6 +21,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float horizontalRunJumpPower = 20;
     [SerializeField] private float horizontalJumpForceCap = 40;
 
+    public bool LockCrouch { get; set; }
     public float WalkSpeed { get { return walkSpeed; } }
     public bool LockDirection { get; set; }
     public bool Climbing { get; set; }
@@ -68,8 +69,8 @@ public class MovementController : MonoBehaviour
         switch (moveState)
         {
             case MovementState.Idle: return;
-            case MovementState.Run: speed = runSpeed; break;
-            case MovementState.CrouchWalk: speed = crouchWalkSpeed; break;
+            case MovementState.Run: speed *= runModifier; break;
+            case MovementState.CrouchWalk: speed *= crouchWalkModifier; break;
             default:
                 break;
         }
@@ -97,6 +98,10 @@ public class MovementController : MonoBehaviour
     }
    public void SetWalkDirection(float newMoveDirection)
     {
+#if UNITY_ANDROID
+        if (!PlayerInputManager.UsingKeyboardAndMouse && (newMoveDirection > 0.95f || newMoveDirection < -0.95f) && !isRunning) ToggleRunning(true); 
+        else if (!PlayerInputManager.UsingKeyboardAndMouse && ((newMoveDirection <= 0.95f && newMoveDirection > 0) || (newMoveDirection >= -0.95f && newMoveDirection < 0)) && isRunning) ToggleRunning(false); 
+#endif
         moveDirection = newMoveDirection;
         if (!LockDirection) animationController.UpdateDirectionalFacing(moveDirection);
         animationController.UpdateAnimationState("IsWalking", moveDirection == 0 ? false : true);
@@ -111,7 +116,8 @@ public class MovementController : MonoBehaviour
     }
     public bool ToggleCrouch(bool isNowCrouching)
     {
-        if (!isNowCrouching && GlobalFunctionsLibrary.IsGrounded(rigidBody, 1, -1)) { checkForUncrouch = true; return false; }
+        if(LockCrouch) return false;
+        if ((!isNowCrouching && GlobalFunctionsLibrary.IsGrounded(rigidBody, 1, -1))) { checkForUncrouch = true; return false; }
         isCrouching = isNowCrouching;
         checkForUncrouch = false;
         if (isCrouching)
